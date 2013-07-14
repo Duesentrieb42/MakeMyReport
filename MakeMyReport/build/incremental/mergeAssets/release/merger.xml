@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger>
+
+    <dataSet config="main" >
+        <source path="C:\Users\Kristina\Desktop\MakeMyReportProject\MakeMyReport\src\main\assets" />
+    </dataSet>
+    <dataSet config="release" >
+        <source path="C:\Users\Kristina\Desktop\MakeMyReportProject\MakeMyReport\src\release\assets" />
+    </dataSet>
+
+</merger>
