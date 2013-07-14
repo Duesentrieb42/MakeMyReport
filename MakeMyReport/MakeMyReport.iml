@@ -61,6 +61,50 @@
       <excludeFolder url="file://$MODULE_DIR$/build/symbols" />
       <excludeFolder url="file://$MODULE_DIR$/build/tmp" />
     </content>
+    <content url="file://$MODULE_DIR$/../../MakeMyReportProject/MakeMyReport">
+      <sourceFolder url="file://$MODULE_DIR$/../../MakeMyReportProject/MakeMyReport/build/source/r/debug" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../MakeMyReportProject/MakeMyReport/build/source/aidl/debug" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../MakeMyReportProject/MakeMyReport/build/source/rs/debug" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../MakeMyReportProject/MakeMyReport/build/source/buildConfig/debug" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../MakeMyReportProject/MakeMyReport/build/res/rs/debug" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../MakeMyReportProject/MakeMyReport/build/source/r/test" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../MakeMyReportProject/MakeMyReport/build/source/aidl/test" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../MakeMyReportProject/MakeMyReport/build/source/rs/test" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../MakeMyReportProject/MakeMyReport/build/source/buildConfig/test" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../MakeMyReportProject/MakeMyReport/build/res/rs/test" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../MakeMyReportProject/MakeMyReport/src/debug/aidl" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../MakeMyReportProject/MakeMyReport/src/debug/assets" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../MakeMyReportProject/MakeMyReport/src/debug/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../MakeMyReportProject/MakeMyReport/src/debug/jni" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../MakeMyReportProject/MakeMyReport/src/debug/rs" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../MakeMyReportProject/MakeMyReport/src/debug/res" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../MakeMyReportProject/MakeMyReport/src/debug/resources" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../MakeMyReportProject/MakeMyReport/src/main/aidl" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../MakeMyReportProject/MakeMyReport/src/main/assets" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../MakeMyReportProject/MakeMyReport/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../MakeMyReportProject/MakeMyReport/src/main/jni" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../MakeMyReportProject/MakeMyReport/src/main/rs" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../MakeMyReportProject/MakeMyReport/src/main/res" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../MakeMyReportProject/MakeMyReport/src/main/resources" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../MakeMyReportProject/MakeMyReport/src/instrumentTest/aidl" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../MakeMyReportProject/MakeMyReport/src/instrumentTest/assets" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../MakeMyReportProject/MakeMyReport/src/instrumentTest/java" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../MakeMyReportProject/MakeMyReport/src/instrumentTest/jni" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../MakeMyReportProject/MakeMyReport/src/instrumentTest/rs" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../MakeMyReportProject/MakeMyReport/src/instrumentTest/res" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../MakeMyReportProject/MakeMyReport/src/instrumentTest/resources" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/../../MakeMyReportProject/MakeMyReport/build/apk" />
+      <excludeFolder url="file://$MODULE_DIR$/../../MakeMyReportProject/MakeMyReport/build/assets" />
+      <excludeFolder url="file://$MODULE_DIR$/../../MakeMyReportProject/MakeMyReport/build/bundles" />
+      <excludeFolder url="file://$MODULE_DIR$/../../MakeMyReportProject/MakeMyReport/build/classes" />
+      <excludeFolder url="file://$MODULE_DIR$/../../MakeMyReportProject/MakeMyReport/build/dependency-cache" />
+      <excludeFolder url="file://$MODULE_DIR$/../../MakeMyReportProject/MakeMyReport/build/exploded-bundles" />
+      <excludeFolder url="file://$MODULE_DIR$/../../MakeMyReportProject/MakeMyReport/build/incremental" />
+      <excludeFolder url="file://$MODULE_DIR$/../../MakeMyReportProject/MakeMyReport/build/libs" />
+      <excludeFolder url="file://$MODULE_DIR$/../../MakeMyReportProject/MakeMyReport/build/manifests" />
+      <excludeFolder url="file://$MODULE_DIR$/../../MakeMyReportProject/MakeMyReport/build/symbols" />
+      <excludeFolder url="file://$MODULE_DIR$/../../MakeMyReportProject/MakeMyReport/build/tmp" />
+    </content>
     <orderEntry type="jdk" jdkName="Android 4.2.2" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="android-support-v4" level="project" />

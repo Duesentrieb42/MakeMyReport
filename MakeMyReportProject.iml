@@ -13,6 +13,10 @@
       <excludeFolder url="file://$MODULE_DIR$/.gradle" />
       <excludeFolder url="file://$MODULE_DIR$/build" />
     </content>
+    <content url="file://$MODULE_DIR$/../MakeMyReportProject">
+      <excludeFolder url="file://$MODULE_DIR$/../MakeMyReportProject/.gradle" />
+      <excludeFolder url="file://$MODULE_DIR$/../MakeMyReportProject/build" />
+    </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
