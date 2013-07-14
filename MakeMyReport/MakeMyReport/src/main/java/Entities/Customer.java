@@ -8,26 +8,26 @@ import android.graphics.Bitmap;
  */
 public class Customer {
 
-    private int mID;
+    private int mCustomerID;
     private String mName;
     private String mDescription;
     private Bitmap mLogo;
 
-    public Customer(int id,
-                    String name,
-                    String description,
-                    Bitmap logo) {
+    public Customer(int CustomerID,
+                    String Name,
+                    String Description,
+                    Bitmap Logo) {
 
-        mID = id;
-        mName = name;
-        mDescription = description;
-        mLogo = logo;
+        mCustomerID = CustomerID;
+        mName = Name;
+        mDescription = Description;
+        mLogo = Logo;
 
     }
 
     // Liefert eine interene ID
-    public int ID() {
-        return mID;
+    public int CustomerID() {
+        return mCustomerID;
     }
 
     // Liefert den Namen des Kunden
