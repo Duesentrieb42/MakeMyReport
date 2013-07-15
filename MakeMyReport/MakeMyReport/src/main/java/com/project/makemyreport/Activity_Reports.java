@@ -22,9 +22,14 @@ public class Activity_Reports extends Activity {
         setContentView(R.layout.activity_reports);
 
         int CustomerID = getIntent().getIntExtra("CustomerID", 0);
-        InitCustomerDate(CustomerID);
 
         InitMenu();
+        InitCustomerDate(CustomerID);
+
+
+    }
+
+    private void InitReports(int CustomerID) {
 
     }
 

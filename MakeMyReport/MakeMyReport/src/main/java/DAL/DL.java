@@ -1,6 +1,7 @@
 package DAL;
 
 import Entities.Customer;
+import Entities.Report;
 import android.content.Context;
 import android.graphics.BitmapFactory;
 import com.project.makemyreport.R;
@@ -67,6 +68,18 @@ public class DL {
         // TODO FAKEDATEN
         return mCustomers.get(Customerid);
 
+    }
+
+    public ArrayList<Report> GetReports(int CustomerID, Context context) {
+
+        // TODO FAKEDATEN
+        ArrayList<Report> Reports = new ArrayList<Report>();
+
+        for (int Index = 0; Index < 50; Index++) {
+            Reports.add(Index, new Report(Index, CustomerID, "Report_" + Index));
+        }
+
+        return Reports;
     }
 
 }
