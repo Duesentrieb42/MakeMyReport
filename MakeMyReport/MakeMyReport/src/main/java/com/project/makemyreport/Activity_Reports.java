@@ -1,14 +1,17 @@
 package com.project.makemyreport;
 
 import Adapters.Adapter_MainMenu;
+import Adapters.Adapter_Report;
 import DAL.DL;
 import Entities.Customer;
 import Entities.MenuItem;
+import Entities.Report;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.*;
 
 import java.util.ArrayList;
@@ -19,17 +22,40 @@ import java.util.ArrayList;
 public class Activity_Reports extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_reports);
 
         int CustomerID = getIntent().getIntExtra("CustomerID", 0);
 
         InitMenu();
         InitCustomerDate(CustomerID);
-
+        InitReports(CustomerID);
 
     }
 
     private void InitReports(int CustomerID) {
+
+        ArrayList<Report> Reports = DL.GetDL().GetReports(CustomerID, Activity_Reports.this);
+
+        GridView gridReports = (GridView) findViewById(R.id.reports_reports);
+        gridReports.setAdapter(new Adapter_Report(Activity_Reports.this, Reports));
+
+        gridReports.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Report report = (Report) parent.getItemAtPosition(position);
+                OnReportClick(report);
+            }
+        });
+    }
+
+    private void OnReportClick(Report report) {
+
+        Intent intent = new Intent(this, Activity_EditReport.class);
+
+        intent.putExtra("ReportID", report.ReportID());
+
+        startActivity(intent);
 
     }
 

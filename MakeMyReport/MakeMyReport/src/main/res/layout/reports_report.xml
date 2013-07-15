@@ -1,0 +1,20 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="100dp"
+              android:layout_height="100dp" android:gravity="center_horizontal" android:padding="10dp"
+        >
+
+    <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="left|center_vertical"
+            android:src="@drawable/menu_add_report" android:focusableInTouchMode="false"
+            android:id="@+id/reports_reportlogo"/>
+    <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Small Text"
+            android:id="@+id/reports_reportname" android:gravity="center_horizontal"
+            android:textColor="@color/Dark_Gray"/>
+</LinearLayout>
