@@ -23,6 +23,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activity_Reports" android:label="Reports"/>
+        <activity android:name=".Activity_EditReport"/>
     </application>
 
 </manifest>

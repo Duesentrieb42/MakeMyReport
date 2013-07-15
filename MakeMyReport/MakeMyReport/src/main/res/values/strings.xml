@@ -10,16 +10,19 @@
     <string name="LastReports">Last used reports</string>
     <string name="Reports">Reports</string>
 
-    <string name="Menu_New_Customer">New Customer</string>
-    <string name="Menu_New_Customer_Description">Add new Customer</string>
+    <string name="Menu_New_Customer">New</string>
+    <string name="Menu_New_Customer_Description">Add new customer</string>
 
-    <string name="Menu_New_Report">New Customer</string>
-    <string name="Menu_New_Report_Description">Add new Customer</string>
+    <string name="Menu_New_Report">New</string>
+    <string name="Menu_New_Report_Description">Add new report</string>
 
     <string name="Menu_Settings">Settings</string>
     <string name="Menu_Settings_Description">Manage your settings</string>
 
     <string name="Menu_Search">Search</string>
     <string name="Menu_Search_Description">Search for customer and reports</string>
+
+    <string name="Menu_About">About</string>
+    <string name="Menu_About_Description">About this app</string>
 
 </resources>

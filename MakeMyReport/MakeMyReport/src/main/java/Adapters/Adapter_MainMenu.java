@@ -11,16 +11,18 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.project.makemyreport.R;
 
+import java.util.ArrayList;
+
 /**
  * Created by Vitali on 26.05.13.
  */
 public class Adapter_MainMenu extends BaseAdapter {
 
-    private MenuItem mMenuItems[] = null;
+    ArrayList<MenuItem> mMenuItems;
     private Context mContext;
     private int mLayoutResourceId;
 
-    public Adapter_MainMenu(Context context, MenuItem menuItems[]) {
+    public Adapter_MainMenu(Context context, ArrayList<MenuItem> menuItems) {
         mContext = context;
         mMenuItems = menuItems;
         mLayoutResourceId = R.layout.home_menuitem;
@@ -28,12 +30,12 @@ public class Adapter_MainMenu extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return mMenuItems.length;
+        return mMenuItems.size();
     }
 
     @Override
     public Object getItem(int i) {
-        return mMenuItems[i];
+        return mMenuItems.get(i);
     }
 
     @Override
@@ -47,7 +49,7 @@ public class Adapter_MainMenu extends BaseAdapter {
         View row = view;
         MenuItemHolder holder = null;
 
-        final MenuItem menuitem = mMenuItems[i];
+        final MenuItem menuitem = mMenuItems.get(i);
         if (row == null) {
             LayoutInflater inflater = ((Activity) mContext).getLayoutInflater();
             row = inflater.inflate(mLayoutResourceId, viewGroup, false);

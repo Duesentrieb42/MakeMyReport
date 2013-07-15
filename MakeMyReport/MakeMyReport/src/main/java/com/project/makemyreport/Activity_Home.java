@@ -61,32 +61,37 @@ public class Activity_Home extends Activity {
 
     private void InitMenu() {
 
-        MenuItem MenuItems[] = new MenuItem[4];
+        ArrayList<MenuItem> MenuItems = new ArrayList<MenuItem>();
         int count = 0;
 
-        MenuItems[count] = new MenuItem(BitmapFactory.decodeResource(getResources(), R.drawable.menu_add_customer),
+        MenuItems.add(count, new MenuItem(BitmapFactory.decodeResource(getResources(), R.drawable.menu_add_customer),
                 this.getString(R.string.Menu_New_Customer),
                 this.getString(R.string.Menu_New_Customer_Description),
-                MenuItem.MenuType.New_Customer);
+                MenuItem.MenuType.New_Customer));
         count += 1;
 
-        MenuItems[count] = new MenuItem(BitmapFactory.decodeResource(getResources(), R.drawable.menu_add_report),
+        MenuItems.add(count, new MenuItem(BitmapFactory.decodeResource(getResources(), R.drawable.menu_add_report),
                 this.getString(R.string.Menu_New_Report),
                 this.getString(R.string.Menu_New_Report_Description),
-                MenuItem.MenuType.New_Report);
+                MenuItem.MenuType.New_Report));
         count += 1;
 
-        MenuItems[count] = new MenuItem(BitmapFactory.decodeResource(getResources(), R.drawable.menu_search),
+        MenuItems.add(count, new MenuItem(BitmapFactory.decodeResource(getResources(), R.drawable.menu_search),
                 this.getString(R.string.Menu_Search),
                 this.getString(R.string.Menu_Search_Description),
-                MenuItem.MenuType.Search);
+                MenuItem.MenuType.Search));
         count += 1;
 
-        MenuItems[count] = new MenuItem(BitmapFactory.decodeResource(getResources(), R.drawable.menu_settings),
+        MenuItems.add(count, new MenuItem(BitmapFactory.decodeResource(getResources(), R.drawable.menu_settings),
                 this.getString(R.string.Menu_Settings),
                 this.getString(R.string.Menu_Settings_Description),
-                MenuItem.MenuType.Settings);
+                MenuItem.MenuType.Settings));
+        count += 1;
 
+        MenuItems.add(count, new MenuItem(BitmapFactory.decodeResource(getResources(), R.drawable.menu_about),
+                this.getString(R.string.Menu_About),
+                this.getString(R.string.Menu_About_Description),
+                MenuItem.MenuType.About));
 
         ListView listMainMenu = (ListView) findViewById(R.id.home_menulist);
         listMainMenu.setAdapter(new Adapter_MainMenu(Activity_Home.this, MenuItems));
@@ -94,7 +99,8 @@ public class Activity_Home extends Activity {
         listMainMenu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+                MenuItem item = (MenuItem) parent.getItemAtPosition(position);
+                OnItemClick(item.MenuType());
             }
         });
     }
@@ -109,6 +115,34 @@ public class Activity_Home extends Activity {
         intent.putExtra("CustomerLogo", customer.Logo());
 
         startActivity(intent);
+
+    }
+
+    private void OnItemClick(MenuItem.MenuType menutype) {
+
+        switch (menutype) {
+            case New_Customer:
+
+                Toast.makeText(getApplicationContext(), "In Bearbeitung.", Toast.LENGTH_SHORT).show();
+                break;
+
+            case New_Report:
+
+                Intent intent = new Intent(this, Activity_EditReport.class);
+                startActivity(intent);
+
+                break;
+
+            case Search:
+                Toast.makeText(getApplicationContext(), "In Bearbeitung.", Toast.LENGTH_SHORT).show();
+                break;
+            case Settings:
+                Toast.makeText(getApplicationContext(), "In Bearbeitung.", Toast.LENGTH_SHORT).show();
+                break;
+            case About:
+                Toast.makeText(getApplicationContext(), "In Bearbeitung.", Toast.LENGTH_SHORT).show();
+                break;
+        }
 
     }
 
