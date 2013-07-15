@@ -1,9 +1,12 @@
 package com.project.makemyreport;
 
 import Adapters.Adapter_Customer;
+import Adapters.Adapter_MainMenu;
 import DAL.DL;
 import Entities.Customer;
+import Entities.MenuItem;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
@@ -11,6 +14,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -28,7 +32,8 @@ public class Activity_Home extends Activity {
     protected void onStart() {
         super.onStart();
 
-        Init();
+        InitMenu();
+        InitCustomers();
     }
 
     @Override
@@ -38,7 +43,7 @@ public class Activity_Home extends Activity {
         return true;
     }
 
-    private void Init() {
+    private void InitCustomers() {
 
         ArrayList<Customer> Customers = DL.GetDL().GetCustomers(Activity_Home.this);
 
@@ -50,6 +55,46 @@ public class Activity_Home extends Activity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Customer customer = (Customer) parent.getItemAtPosition(position);
                 OnCustomerClick(customer);
+            }
+        });
+    }
+
+    private void InitMenu() {
+
+        MenuItem MenuItems[] = new MenuItem[4];
+        int count = 0;
+
+        MenuItems[count] = new MenuItem(BitmapFactory.decodeResource(getResources(), R.drawable.menu_add_customer),
+                this.getString(R.string.Menu_New_Customer),
+                this.getString(R.string.Menu_New_Customer_Description),
+                MenuItem.MenuType.New_Customer);
+        count += 1;
+
+        MenuItems[count] = new MenuItem(BitmapFactory.decodeResource(getResources(), R.drawable.menu_add_report),
+                this.getString(R.string.Menu_New_Report),
+                this.getString(R.string.Menu_New_Report_Description),
+                MenuItem.MenuType.New_Report);
+        count += 1;
+
+        MenuItems[count] = new MenuItem(BitmapFactory.decodeResource(getResources(), R.drawable.menu_search),
+                this.getString(R.string.Menu_Search),
+                this.getString(R.string.Menu_Search_Description),
+                MenuItem.MenuType.Search);
+        count += 1;
+
+        MenuItems[count] = new MenuItem(BitmapFactory.decodeResource(getResources(), R.drawable.menu_settings),
+                this.getString(R.string.Menu_Settings),
+                this.getString(R.string.Menu_Settings_Description),
+                MenuItem.MenuType.Settings);
+
+
+        ListView listMainMenu = (ListView) findViewById(R.id.home_menulist);
+        listMainMenu.setAdapter(new Adapter_MainMenu(Activity_Home.this, MenuItems));
+
+        listMainMenu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
             }
         });
     }
