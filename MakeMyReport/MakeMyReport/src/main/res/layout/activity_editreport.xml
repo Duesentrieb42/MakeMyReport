@@ -13,7 +13,7 @@
             android:id="@+id/editreport_reportid" android:layout_gravity="left|center_vertical"/>
     <TextView
             android:layout_width="fill_parent"
-            android:layout_height="669dp"
+            android:layout_height="368dp"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="REPORT"
             android:id="@+id/text" android:textSize="200dp" android:layout_gravity="center"
