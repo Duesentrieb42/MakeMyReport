@@ -15,6 +15,9 @@ public class DL {
 
     static private DL dl;
 
+    // TODO MUSS ENTFERNT WERDEN WENN DL FERTIG IST
+    private ArrayList<Customer> mCustomers;
+
     public static DL GetDL() {
         if (dl == null) {
             dl = new DL();
@@ -22,8 +25,10 @@ public class DL {
         return dl;
     }
 
+
     public ArrayList<Customer> GetCustomers(Context context) {
 
+        // TODO FAKEDATEN
         ArrayList<Customer> Customers = new ArrayList<Customer>();
         int count = 0;
 
@@ -52,7 +57,16 @@ public class DL {
                 BitmapFactory.decodeResource(context.getResources(), R.drawable.customer)));
         count += 1;
 
+        // TODO MUSS ENTFERNT WERDEN WENN DL FERTIG IST
+        mCustomers = Customers;
         return Customers;
+    }
+
+    public Customer getCustomer(int Customerid) {
+
+        // TODO FAKEDATEN
+        return mCustomers.get(Customerid);
+
     }
 
 }

@@ -110,9 +110,6 @@ public class Activity_Home extends Activity {
         Intent intent = new Intent(this, Activity_Reports.class);
 
         intent.putExtra("CustomerID", customer.CustomerID());
-        intent.putExtra("CustomerName", customer.Name());
-        intent.putExtra("CustomerDescription", customer.Description());
-        intent.putExtra("CustomerLogo", customer.Logo());
 
         startActivity(intent);
 

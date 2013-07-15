@@ -9,15 +9,15 @@
             android:layout_marginLeft="250dp" android:gravity="bottom">
         <LinearLayout
                 android:layout_width="fill_parent"
-                android:layout_height="40dp" android:background="@color/Dark_Gray" android:orientation="horizontal"
-                android:gravity="left" android:layout_marginTop="200dp">
-            <ImageView android:layout_width="40dp" android:layout_height="40dp" android:id="@+id/imageView2"
+                android:layout_height="25dp" android:background="@color/Dark_Gray" android:orientation="horizontal"
+                android:gravity="left" android:layout_marginTop="125dp">
+            <ImageView android:layout_width="25dp" android:layout_height="25dp" android:id="@+id/imageView2"
                        android:layout_gravity="left|center_vertical" android:src="@drawable/document"
                        android:layout_marginLeft="5dp"/>
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="@string/Reports"
                     android:id="@+id/textView" android:textAlignment="gravity" android:gravity="center"
                     android:layout_marginLeft="20dp" android:textColor="@color/Light_Gray"/>
@@ -28,13 +28,13 @@
                 android:id="@+id/reports_reports" android:layout_gravity="center" android:numColumns="auto_fit"
                 android:stretchMode="columnWidth" android:columnWidth="100dp" android:verticalSpacing="10dp"
                 android:horizontalSpacing="10dp" android:padding="20dp" android:smoothScrollbar="true"/>
-        <LinearLayout android:layout_width="fill_parent" android:layout_height="200dp"
+        <LinearLayout android:layout_width="fill_parent" android:layout_height="125dp"
                       android:background="@color/Dark_Gray" android:orientation="horizontal" android:gravity="left"
-                      android:id="@+id/linearLayout">
-            <ImageView android:layout_width="100dp" android:layout_height="100dp"
+                      android:id="@+id/linearLayout" android:padding="10dp">
+            <ImageView android:layout_width="80dp" android:layout_height="80dp"
                        android:id="@+id/reports_customer_logo"
-                       android:layout_gravity="left|center_vertical" android:src="@drawable/customerwhite"
-                       android:layout_marginLeft="5dp"/>
+                       android:layout_gravity="center_vertical|top" android:src="@drawable/customerwhite"
+                    />
             <LinearLayout
                     android:orientation="vertical"
                     android:layout_width="fill_parent"
