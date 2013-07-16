@@ -27,4 +27,6 @@
         <activity android:name=".Activity_EditCustomer" android:theme="@android:style/Theme.Dialog"/>
     </application>
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
 </manifest>

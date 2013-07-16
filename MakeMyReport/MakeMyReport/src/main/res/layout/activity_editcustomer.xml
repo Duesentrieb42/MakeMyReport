@@ -34,7 +34,9 @@
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/editcustomer_name" android:layout_gravity="center"
-                android:clickable="false" android:textIsSelectable="true" android:textColor="@color/Dark_Gray"/>
+                android:clickable="true" android:textIsSelectable="true" android:textColor="@color/Dark_Gray"
+                android:editable="true" android:enabled="true" android:focusable="true"
+                android:focusableInTouchMode="true" android:inputType="text"/>
     </LinearLayout>
     <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
                   android:layout_marginTop="30dp" android:layout_marginLeft="10dp" android:layout_marginRight="10dp"
@@ -44,8 +46,10 @@
                   android:id="@+id/textView2" android:layout_gravity="center" android:textColor="@color/Dark_Gray"/>
         <EditText android:layout_width="300dp" android:layout_height="wrap_content"
                   android:id="@+id/editcustomer_description"
-                  android:layout_gravity="center" android:clickable="false" android:lines="1"
-                  android:textIsSelectable="true" android:textColor="@color/Dark_Gray"/>
+                  android:layout_gravity="center" android:clickable="true" android:lines="1"
+                  android:textIsSelectable="true" android:textColor="@color/Dark_Gray" android:editable="true"
+                  android:enabled="true" android:focusable="true" android:focusableInTouchMode="true"
+                  android:inputType="text"/>
     </LinearLayout>
     <LinearLayout android:layout_width="wrap_content" android:layout_height="fill_parent"
                   android:layout_marginTop="30dp" android:layout_marginLeft="10dp" android:layout_marginRight="10dp"
@@ -64,7 +68,7 @@
                 android:text="@string/ChoseImage"
                 android:id="@+id/editcustomer_pickimage" android:textAlignment="gravity" android:layout_gravity="center"
                 android:background="@drawable/roundrectangle" android:padding="5dp"
-                android:textColor="@color/Dark_Gray"/>
+                android:textColor="@color/Dark_Gray" android:layout_marginLeft="10dp"/>
     </LinearLayout>
     <TextView
             android:layout_width="fill_parent"
@@ -75,9 +79,10 @@
             android:layout_height="fill_parent">
         <include android:layout_width="wrap_content"
                  android:layout_height="wrap_content"
-                 layout="@layout/button_cancel" android:layout_gravity="left"/>
+                 layout="@layout/button_cancel" android:layout_gravity="left" android:id="@+id/editcustomer_cancel"/>
         <include android:layout_width="wrap_content"
                  android:layout_height="wrap_content"
-                 layout="@layout/button_save" android:layout_gravity="right" android:layout_marginLeft="170dp"/>
+                 layout="@layout/button_save" android:layout_gravity="right" android:layout_marginLeft="170dp"
+                 android:id="@+id/editcustomer_save"/>
     </LinearLayout>
 </LinearLayout>

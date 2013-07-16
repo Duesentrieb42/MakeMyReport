@@ -37,6 +37,13 @@ public class Activity_Home extends Activity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+
+        InitCustomers();
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.activity__home, menu);
@@ -147,5 +154,6 @@ public class Activity_Home extends Activity {
         }
 
     }
+
 
 }

@@ -3,9 +3,14 @@ package DAL;
 import Entities.Customer;
 import Entities.Report;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Environment;
+import android.util.Log;
 import com.project.makemyreport.R;
 
+import java.io.*;
+import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +18,9 @@ import java.util.List;
  * Created by Vitali on 14.07.13.
  */
 public class DL {
+
+    private final String APP_PATH = "APP_PATH";
+    private final String CUSTOMER_DATA_PATH = "Customer_Data";
 
     static private DL dl;
 
@@ -58,6 +66,21 @@ public class DL {
                 BitmapFactory.decodeResource(context.getResources(), R.drawable.customer)));
         count += 1;
 
+
+        for (int index = 1; index <= DL.GetDL().getCustomerCount(); index++) {
+
+            File file = new File(Environment.getExternalStorageDirectory(), APP_PATH + "/" + CUSTOMER_DATA_PATH + "/" + index + ".png");
+
+            Customers.add(count, new Customer(count,
+                    "Test",
+                    "Ein echter Datensatz",
+                    BitmapFactory.decodeFile(file.toString())));
+
+            count += 1;
+
+        }
+
+
         // TODO MUSS ENTFERNT WERDEN WENN DL FERTIG IST
         mCustomers = Customers;
         return Customers;
@@ -80,6 +103,80 @@ public class DL {
         }
 
         return Reports;
+    }
+
+    public enum CustomerSaveResult {
+        ExternalStorageNotWritable,
+        CanNotCreatDirectory,
+        Error,
+        Success
+    }
+
+    // Prüft ob Schreibrechte auf der SD vorhanden sind
+    private boolean isExternalStorageWritable() {
+        String state = Environment.getExternalStorageState();
+        if (Environment.MEDIA_MOUNTED.equals(state)) {
+            return true;
+        }
+        return false;
+    }
+
+
+    public CustomerSaveResult SaveNewCustomer(Customer customer) {
+
+        try {
+
+            if (!isExternalStorageWritable()) {
+                return CustomerSaveResult.ExternalStorageNotWritable;
+            }
+
+            File App_Directory = new File(Environment.getExternalStorageDirectory(), APP_PATH);
+            if (!App_Directory.exists()) {
+                if (!App_Directory.mkdir()) {
+                    return CustomerSaveResult.CanNotCreatDirectory;
+                }
+            }
+
+            File Customer_Directory = new File(Environment.getExternalStorageDirectory(), APP_PATH + "/" + CUSTOMER_DATA_PATH);
+            if (!Customer_Directory.exists()) {
+                if (!Customer_Directory.mkdir()) {
+                    return CustomerSaveResult.CanNotCreatDirectory;
+                }
+            }
+
+            File file = new File(Environment.getExternalStorageDirectory(), APP_PATH + "/" + CUSTOMER_DATA_PATH + "/" + customer.CustomerID() + ".png");
+
+            OutputStream os = new FileOutputStream(file);
+
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            customer.Logo().compress(Bitmap.CompressFormat.PNG, 100, stream);
+            byte[] byteArray = stream.toByteArray();
+
+            os.write(byteArray);
+            os.close();
+
+            return CustomerSaveResult.Success;
+
+        } catch (IOException e) {
+
+            Log.w("ExternalStorage", "Error writing ", e);
+            return CustomerSaveResult.Error;
+        }
+
+
+    }
+
+    public int getCustomerCount() {
+
+        File Customer_Directory = new File(Environment.getExternalStorageDirectory(), APP_PATH + "/" + CUSTOMER_DATA_PATH);
+        if (!Customer_Directory.exists()) {
+            if (!Customer_Directory.mkdir()) {
+                return -1;
+            }
+        }
+
+        return Customer_Directory.listFiles().length;
+
     }
 
 }
