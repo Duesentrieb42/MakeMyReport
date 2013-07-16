@@ -22,12 +22,21 @@
                     android:id="@+id/textView" android:textAlignment="gravity" android:gravity="center"
                     android:layout_marginLeft="20dp" android:textColor="@color/Light_Gray"/>
         </LinearLayout>
-        <GridView
+        <FrameLayout
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:id="@+id/home_customers" android:layout_gravity="center" android:numColumns="auto_fit"
-                android:stretchMode="columnWidth" android:columnWidth="100dp" android:verticalSpacing="10dp"
-                android:horizontalSpacing="10dp" android:padding="20dp"/>
+                android:layout_height="fill_parent">
+            <GridView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/home_customers" android:layout_gravity="center" android:numColumns="auto_fit"
+                    android:stretchMode="columnWidth" android:columnWidth="100dp" android:verticalSpacing="10dp"
+                    android:horizontalSpacing="10dp" android:padding="20dp"/>
+            <ImageView
+                    android:layout_width="346dp"
+                    android:layout_height="207dp"
+                    android:id="@+id/imageView3" android:src="@drawable/customer_background"
+                    android:textAlignment="gravity" android:layout_gravity="left|bottom" android:alpha=".100"/>
+        </FrameLayout>
         <LinearLayout android:layout_width="fill_parent" android:layout_height="25dp"
                       android:background="@color/Dark_Gray" android:orientation="horizontal" android:gravity="left"
                       android:id="@+id/linearLayout">

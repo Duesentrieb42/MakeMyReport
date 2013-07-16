@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content" android:padding="10dp" android:background="@color/White">
+
+    <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="25dp" android:background="@color/Dark_Gray" android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp">
+        <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:id="@+id/imageView" android:src="@drawable/customerwhite"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/NewCustomer"
+                android:id="@+id/textView4" android:layout_gravity="center" android:textColor="@color/Light_Gray"/>
+    </LinearLayout>
+    <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:layout_marginTop="30dp" android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
+        <TextView
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/CustomerName"
+                android:id="@+id/textView" android:layout_gravity="center" android:textColor="@color/Dark_Gray"/>
+        <EditText
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/editcustomer_name" android:layout_gravity="center"
+                android:clickable="false" android:textIsSelectable="true" android:textColor="@color/Dark_Gray"/>
+    </LinearLayout>
+    <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+                  android:layout_marginTop="30dp" android:layout_marginLeft="10dp" android:layout_marginRight="10dp"
+                  android:id="@+id/linearLayout">
+        <TextView android:layout_width="200dp" android:layout_height="wrap_content"
+                  android:textAppearance="?android:attr/textAppearanceMedium" android:text="@string/CustomerDescription"
+                  android:id="@+id/textView2" android:layout_gravity="center" android:textColor="@color/Dark_Gray"/>
+        <EditText android:layout_width="300dp" android:layout_height="wrap_content"
+                  android:id="@+id/editcustomer_description"
+                  android:layout_gravity="center" android:clickable="false" android:lines="1"
+                  android:textIsSelectable="true" android:textColor="@color/Dark_Gray"/>
+    </LinearLayout>
+    <LinearLayout android:layout_width="wrap_content" android:layout_height="fill_parent"
+                  android:layout_marginTop="30dp" android:layout_marginLeft="10dp" android:layout_marginRight="10dp"
+                  android:id="@+id/linearLayout2" android:layout_marginBottom="30dp">
+        <TextView android:layout_width="200dp" android:layout_height="wrap_content"
+                  android:textAppearance="?android:attr/textAppearanceMedium" android:text="@string/Customer_Image"
+                  android:id="@+id/textView3" android:layout_gravity="center" android:textColor="@color/Dark_Gray"/>
+        <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:id="@+id/editcustomer_logo" android:layout_gravity="center" android:src="@drawable/customer"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/ChoseImage"
+                android:id="@+id/editcustomer_pickimage" android:textAlignment="gravity" android:layout_gravity="center"
+                android:background="@drawable/roundrectangle" android:padding="5dp"
+                android:textColor="@color/Dark_Gray"/>
+    </LinearLayout>
+    <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:id="@+id/textView5" android:background="@color/Dark_Gray"/>
+    <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+        <include android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 layout="@layout/button_cancel" android:layout_gravity="left"/>
+        <include android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 layout="@layout/button_save" android:layout_gravity="right" android:layout_marginLeft="170dp"/>
+    </LinearLayout>
+</LinearLayout>

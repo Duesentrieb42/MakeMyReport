@@ -24,6 +24,7 @@
         </activity>
         <activity android:name=".Activity_Reports" android:label="Reports"/>
         <activity android:name=".Activity_EditReport"/>
+        <activity android:name=".Activity_EditCustomer" android:theme="@android:style/Theme.Dialog"/>
     </application>
 
 </manifest>

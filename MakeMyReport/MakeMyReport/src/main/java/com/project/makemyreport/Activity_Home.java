@@ -117,15 +117,20 @@ public class Activity_Home extends Activity {
 
     private void OnItemClick(MenuItem.MenuType menutype) {
 
+        Intent intent;
+
         switch (menutype) {
             case New_Customer:
 
-                Toast.makeText(getApplicationContext(), "In Bearbeitung.", Toast.LENGTH_SHORT).show();
+
+                intent = new Intent(this, Activity_EditCustomer.class);
+                startActivity(intent);
+
                 break;
 
             case New_Report:
 
-                Intent intent = new Intent(this, Activity_EditReport.class);
+                intent = new Intent(this, Activity_EditReport.class);
                 startActivity(intent);
 
                 break;
