@@ -18,7 +18,7 @@ public class Activity_EditReport extends Activity {
         int ReportID = getIntent().getIntExtra("ReportID", -1);
 
         TextView reportid = (TextView) findViewById(R.id.editreport_reportid);
-        reportid.setText("Report_ID" + reportid);
+        reportid.setText("Report_ID" + ReportID);
 
 
     }
