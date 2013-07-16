@@ -15,7 +15,7 @@
             android:layout_width="fill_parent"
             android:layout_height="368dp"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="REPORT"
+            android:text="test"
             android:id="@+id/text" android:textSize="200dp" android:layout_gravity="center"
             android:textAlignment="gravity" android:gravity="center" android:layout_marginTop="-63dp"/>
 </LinearLayout>
