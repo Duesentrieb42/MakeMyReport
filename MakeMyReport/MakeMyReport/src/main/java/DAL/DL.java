@@ -42,6 +42,12 @@ public class DL extends SQLiteOpenHelper {
     private static final String KEY_REPORT_CUSTOMER_ID = "customerid";
     private static final String KEY_REPORT_NAME = "name";
 
+    // Report Entry
+    private static final String TABLE_REPORT_ENTRY = "report_entries";
+
+    private static final String KEY_REPORT_ENTTRY_ID = "id";
+    private static final String KEY_REPORT_ENTRY_IMAGE = "image";
+
     static private DL dl;
 
     public DL(Context context) {
@@ -70,6 +76,11 @@ public class DL extends SQLiteOpenHelper {
                 + KEY_REPORT_CUSTOMER_ID + " INTEGER,"
                 + KEY_REPORT_NAME + " TEXT,"+ ")";
         db.execSQL(CREATE_REPORT_TABLE);
+
+        String CREATE_ENTRIES = "CREATE TABLE " + TABLE_REPORT_ENTRY + "("
+                + KEY_REPORT_ENTTRY_ID + " INTEGER PRIMARY KEY,"
+                + KEY_REPORT_NAME + ")";
+        db.execSQL(CREATE_ENTRIES);
 
     }
 
