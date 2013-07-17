@@ -18,6 +18,8 @@ public class MenuItem {
     public enum MenuType {
         New_Customer,
         New_Report,
+        Delete_Customer,
+        Delete_Report,
         Search,
         Settings,
         About,

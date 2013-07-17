@@ -90,6 +90,12 @@ public class Activity_Reports extends Activity {
                 MenuItem.MenuType.Search));
         count += 1;
 
+        MenuItems.add(count, new MenuItem(BitmapFactory.decodeResource(getResources(), R.drawable.cancel),
+                this.getString(R.string.Menu_Delete_Report),
+                this.getString(R.string.Menu_Delete_report_Description),
+                MenuItem.MenuType.Delete_Report));
+        count += 1;
+
         MenuItems.add(count, new MenuItem(BitmapFactory.decodeResource(getResources(), R.drawable.menu_settings),
                 this.getString(R.string.Menu_Settings),
                 this.getString(R.string.Menu_Settings_Description),

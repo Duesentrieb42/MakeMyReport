@@ -77,16 +77,16 @@ public class Activity_Home extends Activity {
                 MenuItem.MenuType.New_Customer));
         count += 1;
 
-        MenuItems.add(count, new MenuItem(BitmapFactory.decodeResource(getResources(), R.drawable.menu_add_report),
-                this.getString(R.string.Menu_New_Report),
-                this.getString(R.string.Menu_New_Report_Description),
-                MenuItem.MenuType.New_Report));
-        count += 1;
-
         MenuItems.add(count, new MenuItem(BitmapFactory.decodeResource(getResources(), R.drawable.menu_search),
                 this.getString(R.string.Menu_Search),
                 this.getString(R.string.Menu_Search_Description),
                 MenuItem.MenuType.Search));
+        count += 1;
+
+        MenuItems.add(count, new MenuItem(BitmapFactory.decodeResource(getResources(), R.drawable.cancel),
+                this.getString(R.string.Menu_Delete_Customer),
+                this.getString(R.string.Menu_Delete_Customer_Description),
+                MenuItem.MenuType.Delete_Customer));
         count += 1;
 
         MenuItems.add(count, new MenuItem(BitmapFactory.decodeResource(getResources(), R.drawable.menu_settings),
