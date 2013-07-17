@@ -52,7 +52,7 @@ public class Activity_Home extends Activity {
 
     private void InitCustomers() {
 
-        ArrayList<Customer> Customers = DL.GetDL().GetCustomers(Activity_Home.this);
+        ArrayList<Customer> Customers = DL.GetDL(Activity_Home.this).GetAllCustomers();
 
         GridView gridCustomers = (GridView) findViewById(R.id.home_customers);
         gridCustomers.setAdapter(new Adapter_Customer(Activity_Home.this, Customers));

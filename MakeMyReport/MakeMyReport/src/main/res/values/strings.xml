@@ -32,4 +32,10 @@
     <string name="Cancel">Cancel</string>
     <string name="Save">Save</string>
 
+    <string name="Error_Customer_Name">Please enter a name</string>
+    <string name="Error_Customer_Description">Please enter a description</string>
+    <string name="Error_Customer_Logo">Please select a Logo</string>
+
+
+
 </resources>
