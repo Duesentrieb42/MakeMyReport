@@ -27,14 +27,20 @@ public class DL extends SQLiteOpenHelper {
     // Database Name
     private static final String DATABASE_NAME = "DataReport";
 
-    // Contacts table name
+    // Customer
     private static final String TABLE_CUSTOMERS = "customers";
-
 
     private static final String KEY_ID = "id";
     private static final String KEY_NAME = "name";
     private static final String KEY_DESCRIPTION = "description";
     private static final String KEY_LOGO = "logo";
+
+    // Report
+    private static final String TABLE_REPORT = "customers";
+
+    private static final String KEY_REPORT_ID = "id";
+    private static final String KEY_REPORT_CUSTOMER_ID = "customerid";
+    private static final String KEY_REPORT_NAME = "name";
 
     static private DL dl;
 
@@ -58,6 +64,13 @@ public class DL extends SQLiteOpenHelper {
                 + KEY_DESCRIPTION + " TEXT,"
                 + KEY_LOGO + " BLOB"+ ")";
         db.execSQL(CREATE_CONTACTS_TABLE);
+
+        String CREATE_REPORT_TABLE = "CREATE TABLE " + TABLE_REPORT + "("
+                + KEY_REPORT_ID + " INTEGER PRIMARY KEY,"
+                + KEY_REPORT_CUSTOMER_ID + " INTEGER,"
+                + KEY_REPORT_NAME + " TEXT,"+ ")";
+        db.execSQL(CREATE_REPORT_TABLE);
+
     }
 
     // Upgrading database
@@ -73,7 +86,7 @@ public class DL extends SQLiteOpenHelper {
 
     // Save --------------------------------------------------------------------------------Save
 
-    public CustomerSaveResult SaveCustomer(Customer customer) {
+    public SaveResult SaveCustomer(Customer customer) {
 
         try{
 
@@ -94,15 +107,37 @@ public class DL extends SQLiteOpenHelper {
             db.insert(TABLE_CUSTOMERS, null, values);
             db.close(); // Closing database connection
 
-            return CustomerSaveResult.Success;
+            return SaveResult.Success;
 
         }catch(Exception ex){
-            return CustomerSaveResult.Error;
+            return SaveResult.Error;
         }
-
     }
 
-    public enum CustomerSaveResult {
+    public SaveResult SaveReport(Report report) {
+
+        try{
+
+            SQLiteDatabase db = this.getWritableDatabase();
+
+            // Values für Insert
+            ContentValues values = new ContentValues();
+            values.put(KEY_REPORT_ID, report.ReportID());
+            values.put(KEY_REPORT_CUSTOMER_ID, report.CustomerID());
+            values.put(KEY_REPORT_NAME, report.Name());
+
+            // Inserting Row
+            db.insert(TABLE_REPORT, null, values);
+            db.close(); // Closing database connection
+
+            return SaveResult.Success;
+
+        }catch(Exception ex){
+            return SaveResult.Error;
+        }
+    }
+
+    public enum SaveResult {
         Error,
         Success
     }
@@ -162,19 +197,50 @@ public class DL extends SQLiteOpenHelper {
         return null;
     }
 
-    public ArrayList<Report> GetReports(int CustomerID, Context context) {
+    public ArrayList<Report> GetReports(int CustomerID) {
 
-        // TODO FAKEDATEN
-        ArrayList<Report> Reports = new ArrayList<Report>();
+        ArrayList<Report> reports = new ArrayList<Report>();
 
-        for (int Index = 0; Index < 50; Index++) {
-            Reports.add(Index, new Report(Index, CustomerID, "Report_" + Index));
+        String selectQuery = "SELECT  * FROM " + TABLE_REPORT;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+
+                int id = Integer.parseInt(cursor.getString(0));
+                int customerid = Integer.parseInt(cursor.getString(1));
+                String name = cursor.getString(2);
+
+                reports.add(new Report(id,customerid, name));
+
+            } while (cursor.moveToNext());
         }
 
-        return Reports;
+        return reports;
+
     }
 
+    public Report getReport(int ReportID) {
 
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(TABLE_CUSTOMERS, new String[] { KEY_REPORT_ID,
+                KEY_REPORT_CUSTOMER_ID, KEY_REPORT_NAME}, KEY_ID + "=?",
+                new String[] { String.valueOf(ReportID) }, null, null, null, null);
+        if (cursor != null){
+            cursor.moveToFirst();
+
+            int id = Integer.parseInt(cursor.getString(0));
+            int customerid = Integer.parseInt(cursor.getString(1));
+            String name = cursor.getString(2);
+
+            return new Report(id,customerid, name);
+
+        }
+
+        return null;
+    }
 
 
 
