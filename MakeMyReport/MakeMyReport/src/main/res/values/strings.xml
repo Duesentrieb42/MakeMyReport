@@ -16,11 +16,17 @@
     <string name="Menu_New_Report">New</string>
     <string name="Menu_New_Report_Description">Add new report</string>
 
+    <string name="Menu_Delete_Customer">Delete</string>
+    <string name="Menu_Delete_Customer_Description">Delete customer</string>
+
+    <string name="Menu_Delete_Report">Delete</string>
+    <string name="Menu_Delete_report_Description">Delete report</string>
+
     <string name="Menu_Settings">Settings</string>
     <string name="Menu_Settings_Description">Manage your settings</string>
 
     <string name="Menu_Search">Search</string>
-    <string name="Menu_Search_Description">Search for customer and reports</string>
+    <string name="Menu_Search_Description">Search for customers and reports</string>
 
     <string name="Menu_About">About</string>
     <string name="Menu_About_Description">About this app</string>
@@ -31,5 +37,11 @@
     <string name="NewCustomer">New customer</string>
     <string name="Cancel">Cancel</string>
     <string name="Save">Save</string>
+
+    <string name="Error_Customer_Name">Please enter a name</string>
+    <string name="Error_Customer_Description">Please enter a description</string>
+    <string name="Error_Customer_Logo">Please select a Logo</string>
+
+
 
 </resources>

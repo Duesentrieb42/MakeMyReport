@@ -35,7 +35,7 @@ public class Activity_Reports extends Activity {
 
     private void InitReports(int CustomerID) {
 
-        ArrayList<Report> Reports = DL.GetDL().GetReports(CustomerID, Activity_Reports.this);
+        ArrayList<Report> Reports = DL.GetDL(Activity_Reports.this).GetReports(CustomerID, Activity_Reports.this);
 
         GridView gridReports = (GridView) findViewById(R.id.reports_reports);
         gridReports.setAdapter(new Adapter_Report(Activity_Reports.this, Reports));
@@ -61,7 +61,7 @@ public class Activity_Reports extends Activity {
 
     private void InitCustomerDate(int CustomerID) {
 
-        Customer customer = DL.GetDL().getCustomer(CustomerID);
+        Customer customer = DL.GetDL(Activity_Reports.this).getCustomer(CustomerID);
 
         TextView CustomerName = (TextView) findViewById(R.id.reports_customername);
         TextView CustomerDescription = (TextView) findViewById(R.id.reports_customerdescription);
@@ -88,6 +88,12 @@ public class Activity_Reports extends Activity {
                 this.getString(R.string.Menu_Search),
                 this.getString(R.string.Menu_Search_Description),
                 MenuItem.MenuType.Search));
+        count += 1;
+
+        MenuItems.add(count, new MenuItem(BitmapFactory.decodeResource(getResources(), R.drawable.cancel),
+                this.getString(R.string.Menu_Delete_Report),
+                this.getString(R.string.Menu_Delete_report_Description),
+                MenuItem.MenuType.Delete_Report));
         count += 1;
 
         MenuItems.add(count, new MenuItem(BitmapFactory.decodeResource(getResources(), R.drawable.menu_settings),

@@ -52,7 +52,7 @@ public class Activity_Home extends Activity {
 
     private void InitCustomers() {
 
-        ArrayList<Customer> Customers = DL.GetDL().GetCustomers(Activity_Home.this);
+        ArrayList<Customer> Customers = DL.GetDL(Activity_Home.this).GetAllCustomers();
 
         GridView gridCustomers = (GridView) findViewById(R.id.home_customers);
         gridCustomers.setAdapter(new Adapter_Customer(Activity_Home.this, Customers));
@@ -77,16 +77,16 @@ public class Activity_Home extends Activity {
                 MenuItem.MenuType.New_Customer));
         count += 1;
 
-        MenuItems.add(count, new MenuItem(BitmapFactory.decodeResource(getResources(), R.drawable.menu_add_report),
-                this.getString(R.string.Menu_New_Report),
-                this.getString(R.string.Menu_New_Report_Description),
-                MenuItem.MenuType.New_Report));
-        count += 1;
-
         MenuItems.add(count, new MenuItem(BitmapFactory.decodeResource(getResources(), R.drawable.menu_search),
                 this.getString(R.string.Menu_Search),
                 this.getString(R.string.Menu_Search_Description),
                 MenuItem.MenuType.Search));
+        count += 1;
+
+        MenuItems.add(count, new MenuItem(BitmapFactory.decodeResource(getResources(), R.drawable.cancel),
+                this.getString(R.string.Menu_Delete_Customer),
+                this.getString(R.string.Menu_Delete_Customer_Description),
+                MenuItem.MenuType.Delete_Customer));
         count += 1;
 
         MenuItems.add(count, new MenuItem(BitmapFactory.decodeResource(getResources(), R.drawable.menu_settings),
