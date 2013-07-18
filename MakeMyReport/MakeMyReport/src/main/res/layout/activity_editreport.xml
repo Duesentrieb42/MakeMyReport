@@ -4,28 +4,62 @@
               android:orientation="vertical"
               android:layout_width="fill_parent"
               android:layout_height="fill_parent"
-              android:padding="10dp"
               android:background="@color/White">
 
+    <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" android:background="@color/Dark_Gray" android:orientation="horizontal"
+            android:gravity="left">
+        <ImageView android:layout_width="25dp" android:layout_height="25dp" android:id="@+id/imageView2"
+                   android:layout_gravity="left|center_vertical" android:src="@drawable/customers"
+                   android:layout_marginLeft="5dp"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/Customers"
+                android:id="@+id/textView" android:textAlignment="gravity" android:gravity="center"
+                android:layout_marginLeft="20dp" android:textColor="@color/Light_Gray"/>
+    </LinearLayout>
 
     <LinearLayout
             android:orientation="horizontal"
             android:layout_width="fill_parent"
-            android:layout_height="605dp"
-            android:background="@color/Dark_Gray">
+            android:layout_height="524dp"
+            android:background="@color/White">
+
+
 
         <ImageView
                 android:layout_width="630dp"
                 android:layout_height="fill_parent"
-                android:id="@+id/imageView"/>
+                android:id="@+id/imageView"
+                android:layout_margin="10dp"/>
 
         <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Medium Text"
-                android:id="@+id/textView"/>
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Large Text"
+                android:id="@+id/textView"
+                android:layout_margin="10dp"/>
 
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="25dp" android:background="@color/Dark_Gray" android:orientation="horizontal"
+            android:gravity="left">
+        <ImageView android:layout_width="25dp" android:layout_height="25dp" android:id="@+id/imageView2"
+                   android:layout_gravity="left|center_vertical" android:src="@drawable/customers"
+                   android:layout_marginLeft="5dp"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/Customers"
+                android:id="@+id/textView" android:textAlignment="gravity" android:gravity="center"
+                android:layout_marginLeft="20dp" android:textColor="@color/Light_Gray"/>
     </LinearLayout>
 
     <LinearLayout
