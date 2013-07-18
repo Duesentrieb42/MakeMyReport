@@ -35,7 +35,7 @@ public class Activity_Reports extends Activity {
 
     private void InitReports(int CustomerID) {
 
-        ArrayList<Report> Reports = DL.GetDL(Activity_Reports.this).GetReports(CustomerID, Activity_Reports.this);
+        ArrayList<Report> Reports = DL.GetDL(Activity_Reports.this).GetReports(CustomerID);
 
         GridView gridReports = (GridView) findViewById(R.id.reports_reports);
         gridReports.setAdapter(new Adapter_Report(Activity_Reports.this, Reports));

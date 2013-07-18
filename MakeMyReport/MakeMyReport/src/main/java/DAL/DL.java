@@ -36,7 +36,7 @@ public class DL extends SQLiteOpenHelper {
     private static final String KEY_LOGO = "logo";
 
     // Report
-    private static final String TABLE_REPORT = "customers";
+    private static final String TABLE_REPORT = "reports";
 
     private static final String KEY_REPORT_ID = "id";
     private static final String KEY_REPORT_CUSTOMER_ID = "customerid";
@@ -57,6 +57,8 @@ public class DL extends SQLiteOpenHelper {
     public static DL GetDL(Context context) {
         if (dl == null) {
             dl = new DL(context);
+
+
         }
         return dl;
     }
@@ -74,12 +76,12 @@ public class DL extends SQLiteOpenHelper {
         String CREATE_REPORT_TABLE = "CREATE TABLE " + TABLE_REPORT + "("
                 + KEY_REPORT_ID + " INTEGER PRIMARY KEY,"
                 + KEY_REPORT_CUSTOMER_ID + " INTEGER,"
-                + KEY_REPORT_NAME + " TEXT,"+ ")";
+                + KEY_REPORT_NAME + " TEXT"+ ")";
         db.execSQL(CREATE_REPORT_TABLE);
 
         String CREATE_ENTRIES = "CREATE TABLE " + TABLE_REPORT_ENTRY + "("
                 + KEY_REPORT_ENTTRY_ID + " INTEGER PRIMARY KEY,"
-                + KEY_REPORT_NAME + ")";
+                + KEY_REPORT_ENTRY_IMAGE + " BLOB)";
         db.execSQL(CREATE_ENTRIES);
 
     }
@@ -89,6 +91,12 @@ public class DL extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // Drop older table if existed
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_CUSTOMERS);
+
+        // Drop older table if existed
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_REPORT);
+
+        // Drop older table if existed
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_REPORT_ENTRY);
 
         // Create tables again
         onCreate(db);
@@ -235,7 +243,8 @@ public class DL extends SQLiteOpenHelper {
 
     public Report getReport(int ReportID) {
 
-        SQLiteDatabase db = this.getReadableDatabase();
+        SQLiteDatabase db =
+                this.getReadableDatabase();
         Cursor cursor = db.query(TABLE_CUSTOMERS, new String[] { KEY_REPORT_ID,
                 KEY_REPORT_CUSTOMER_ID, KEY_REPORT_NAME}, KEY_ID + "=?",
                 new String[] { String.valueOf(ReportID) }, null, null, null, null);
@@ -252,7 +261,5 @@ public class DL extends SQLiteOpenHelper {
 
         return null;
     }
-
-
 
 }
