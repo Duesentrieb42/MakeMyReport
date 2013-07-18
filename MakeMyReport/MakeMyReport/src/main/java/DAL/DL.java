@@ -161,7 +161,7 @@ public class DL extends SQLiteOpenHelper {
         Success
     }
 
-    // Read --------------------------------------------------------------------------------Read
+    // Read -------------------------------------------------------------------------------Read
 
     public ArrayList<Customer> GetAllCustomers() {
 
