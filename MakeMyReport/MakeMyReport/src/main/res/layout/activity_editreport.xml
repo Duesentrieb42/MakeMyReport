@@ -2,8 +2,36 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content" android:padding="10dp" android:background="@color/White">
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:padding="10dp"
+              android:background="@color/White">
 
 
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="605dp"
+            android:background="@color/Dark_Gray">
+
+        <ImageView
+                android:layout_width="630dp"
+                android:layout_height="fill_parent"
+                android:id="@+id/imageView"/>
+
+        <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Medium Text"
+                android:id="@+id/textView"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@color/Light_Gray">
+    </LinearLayout>
 </LinearLayout>
