@@ -100,6 +100,8 @@ public class Activity_EditCustomer extends Activity {
 
             ImageView imageView = (ImageView) findViewById(R.id.editcustomer_logo);
             mLogo = BitmapFactory.decodeFile(picturePath);
+
+            mLogo=Bitmap.createScaledBitmap(mLogo, 800,800, true);
             imageView.setImageBitmap(mLogo);
         }
     }
