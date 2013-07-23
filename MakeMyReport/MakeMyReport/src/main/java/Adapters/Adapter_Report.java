@@ -19,7 +19,7 @@ import java.util.ArrayList;
  */
 public class Adapter_Report extends BaseAdapter {
 
-    private ArrayList<Report> mReports = null;
+    private ArrayList<Report> mReports;
     private Context mContext;
     private int mLayoutResourceId;
 

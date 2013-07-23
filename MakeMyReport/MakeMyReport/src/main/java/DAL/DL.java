@@ -2,6 +2,7 @@ package DAL;
 
 import Entities.Customer;
 import Entities.Report;
+import Entities.Report_Entry;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -18,37 +19,12 @@ import java.util.ArrayList;
 /**
  * Created by Vitali on 14.07.13.
  */
-public class DL extends SQLiteOpenHelper {
+public class DL extends SQLiteOpenHelper implements itf_DL_Customers,itf_DL_Reports,itf_DL_Report_Entries{
 
-    // All Static variables
-    // Database Version
+
     private static final int DATABASE_VERSION = 1;
-
-    // Database Name
     private static final String DATABASE_NAME = "DataReport";
-
-    // Customer
-    private static final String TABLE_CUSTOMERS = "customers";
-
-    private static final String KEY_ID = "id";
-    private static final String KEY_NAME = "name";
-    private static final String KEY_DESCRIPTION = "description";
-    private static final String KEY_LOGO = "logo";
-
-    // Report
-    private static final String TABLE_REPORT = "reports";
-
-    private static final String KEY_REPORT_ID = "id";
-    private static final String KEY_REPORT_CUSTOMER_ID = "customerid";
-    private static final String KEY_REPORT_NAME = "name";
-
-    // Report Entry
-    private static final String TABLE_REPORT_ENTRY = "report_entries";
-
-    private static final String KEY_REPORT_ENTTRY_ID = "id";
-    private static final String KEY_REPORT_ENTRY_IMAGE = "image";
-
-    static private DL dl;
+    private static DL dl;
 
     public DL(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -57,8 +33,6 @@ public class DL extends SQLiteOpenHelper {
     public static DL GetDL(Context context) {
         if (dl == null) {
             dl = new DL(context);
-
-
         }
         return dl;
     }
@@ -66,23 +40,10 @@ public class DL extends SQLiteOpenHelper {
     // Creating Tables
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String CREATE_CONTACTS_TABLE = "CREATE TABLE " + TABLE_CUSTOMERS + "("
-                + KEY_ID + " INTEGER PRIMARY KEY,"
-                + KEY_NAME + " TEXT,"
-                + KEY_DESCRIPTION + " TEXT,"
-                + KEY_LOGO + " BLOB"+ ")";
-        db.execSQL(CREATE_CONTACTS_TABLE);
 
-        String CREATE_REPORT_TABLE = "CREATE TABLE " + TABLE_REPORT + "("
-                + KEY_REPORT_ID + " INTEGER PRIMARY KEY,"
-                + KEY_REPORT_CUSTOMER_ID + " INTEGER,"
-                + KEY_REPORT_NAME + " TEXT"+ ")";
-        db.execSQL(CREATE_REPORT_TABLE);
-
-        String CREATE_ENTRIES = "CREATE TABLE " + TABLE_REPORT_ENTRY + "("
-                + KEY_REPORT_ENTTRY_ID + " INTEGER PRIMARY KEY,"
-                + KEY_REPORT_ENTRY_IMAGE + " BLOB)";
-        db.execSQL(CREATE_ENTRIES);
+        db.execSQL(CustomerTable.GetCreateString());
+        db.execSQL(ReportTable.GetCreateString());
+        db.execSQL(ReportEntryTable.GetCreateString());
 
     }
 
@@ -90,22 +51,22 @@ public class DL extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // Drop older table if existed
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_CUSTOMERS);
+        db.execSQL("DROP TABLE IF EXISTS " + CustomerTable.TableName);
 
         // Drop older table if existed
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_REPORT);
+        db.execSQL("DROP TABLE IF EXISTS " + ReportTable.TableName);
 
         // Drop older table if existed
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_REPORT_ENTRY);
+        db.execSQL("DROP TABLE IF EXISTS " + ReportEntryTable.TableName);
 
         // Create tables again
         onCreate(db);
     }
 
+    //-------------------------------------------------------------------  Customers
 
-    // Save --------------------------------------------------------------------------------Save
-
-    public SaveResult SaveCustomer(Customer customer) {
+    @Override
+    public boolean SaveCustomer(Customer customer) {
 
         try{
 
@@ -118,56 +79,27 @@ public class DL extends SQLiteOpenHelper {
 
             // Values für Insert
             ContentValues values = new ContentValues();
-            values.put(KEY_NAME, customer.Name());
-            values.put(KEY_DESCRIPTION, customer.Description());
-            values.put(KEY_LOGO, byteArray);
+            values.put(CustomerTable.CustomerName.Name(), customer.Name());
+            values.put(CustomerTable.CustomerDescription.Name(), customer.Description());
+            values.put(CustomerTable.CustomerLogo.Name(), byteArray);
 
             // Inserting Row
-            db.insert(TABLE_CUSTOMERS, null, values);
+            db.insert(CustomerTable.TableName, null, values);
             db.close(); // Closing database connection
 
-            return SaveResult.Success;
+            return true;
 
         }catch(Exception ex){
-            return SaveResult.Error;
+            return false;
         }
     }
 
-    public SaveResult SaveReport(Report report) {
-
-        try{
-
-            SQLiteDatabase db = this.getWritableDatabase();
-
-            // Values für Insert
-            ContentValues values = new ContentValues();
-            values.put(KEY_REPORT_ID, report.ReportID());
-            values.put(KEY_REPORT_CUSTOMER_ID, report.CustomerID());
-            values.put(KEY_REPORT_NAME, report.Name());
-
-            // Inserting Row
-            db.insert(TABLE_REPORT, null, values);
-            db.close(); // Closing database connection
-
-            return SaveResult.Success;
-
-        }catch(Exception ex){
-            return SaveResult.Error;
-        }
-    }
-
-    public enum SaveResult {
-        Error,
-        Success
-    }
-
-    // Read -------------------------------------------------------------------------------Read
-
-    public ArrayList<Customer> GetAllCustomers() {
+    @Override
+    public ArrayList<Customer> GetCustomers() {
 
         ArrayList<Customer> customers = new ArrayList<Customer>();
 
-        String selectQuery = "SELECT  * FROM " + TABLE_CUSTOMERS;
+        String selectQuery = "SELECT  * FROM " + CustomerTable.TableName;
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
@@ -191,12 +123,16 @@ public class DL extends SQLiteOpenHelper {
         return customers;
     }
 
-    public Customer getCustomer(int Customerid) {
+    @Override
+    public Customer GetCustomer(int CustomerID) {
 
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(TABLE_CUSTOMERS, new String[] { KEY_ID,
-                KEY_NAME, KEY_DESCRIPTION,KEY_LOGO }, KEY_ID + "=?",
-                new String[] { String.valueOf(Customerid) }, null, null, null, null);
+        Cursor cursor = db.query(CustomerTable.TableName, new String[] { CustomerTable.CustomerID.Name(),
+                CustomerTable.CustomerName.Name(),
+                CustomerTable.CustomerDescription.Name(),
+                CustomerTable.CustomerLogo.Name() },
+                CustomerTable.CustomerID.Name() + "=?",
+                new String[] { String.valueOf(CustomerID) }, null, null, null, null);
         if (cursor != null){
             cursor.moveToFirst();
 
@@ -214,52 +150,70 @@ public class DL extends SQLiteOpenHelper {
         }
 
         return null;
+
     }
 
+    @Override
+    public boolean UpdateCustomer(Customer customer) {
+        return false;
+    }
+
+    @Override
+    public boolean DeleteCustomer(int CustomerID) {
+        return false;
+    }
+
+    //-------------------------------------------------------------------  Reports
+
+    @Override
     public ArrayList<Report> GetReports(int CustomerID) {
-
-        ArrayList<Report> reports = new ArrayList<Report>();
-
-        String selectQuery = "SELECT  * FROM " + TABLE_REPORT;
-
-        SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery(selectQuery, null);
-
-        if (cursor.moveToFirst()) {
-            do {
-
-                int id = Integer.parseInt(cursor.getString(0));
-                int customerid = Integer.parseInt(cursor.getString(1));
-                String name = cursor.getString(2);
-
-                reports.add(new Report(id,customerid, name));
-
-            } while (cursor.moveToNext());
-        }
-
-        return reports;
-
+        return new ArrayList<Report>();
     }
 
-    public Report getReport(int ReportID) {
-
-        SQLiteDatabase db =
-                this.getReadableDatabase();
-        Cursor cursor = db.query(TABLE_CUSTOMERS, new String[] { KEY_REPORT_ID,
-                KEY_REPORT_CUSTOMER_ID, KEY_REPORT_NAME}, KEY_ID + "=?",
-                new String[] { String.valueOf(ReportID) }, null, null, null, null);
-        if (cursor != null){
-            cursor.moveToFirst();
-
-            int id = Integer.parseInt(cursor.getString(0));
-            int customerid = Integer.parseInt(cursor.getString(1));
-            String name = cursor.getString(2);
-
-            return new Report(id,customerid, name);
-
-        }
-
+    @Override
+    public Customer GetReport(int ReportsID) {
         return null;
+    }
+
+    public boolean SaveReport(Report report) {
+        return false;
+    }
+
+    @Override
+    public boolean UpdateReport(Report report) {
+        return false;
+    }
+
+    @Override
+    public boolean DeleteReport(int ReportID) {
+        return false;
+    }
+
+    //-------------------------------------------------------------------  ReportEntries
+
+    @Override
+    public ArrayList<Report_Entry> GetReportEntries(int ReportID) {
+        return null;
+    }
+
+    @Override
+    public Customer GetReportEntry(int ReportEntryID) {
+        return null;
+    }
+
+    @Override
+    public boolean SaveReportEntry(Report_Entry ReportEntry) {
+        return false;
+    }
+
+    @Override
+    public boolean UpdateReportEntry(Report_Entry ReportEntry) {
+        return false;
+    }
+
+    @Override
+    public boolean DeleteReportEntry(int ReportEntryID) {
+        return false;
     }
 
 }

@@ -68,7 +68,7 @@ public class Activity_EditCustomer extends Activity {
             if (DL.GetDL(Activity_EditCustomer.this).SaveCustomer(new Customer(-1,
                     name.getText().toString(),
                     description.getText().toString(),
-                    mLogo)) == DL.SaveResult.Success) {
+                    mLogo))) {
 
                 this.finish();
             } else {

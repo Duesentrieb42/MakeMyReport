@@ -61,7 +61,7 @@ public class Activity_Reports extends Activity {
 
     private void InitCustomerDate(int CustomerID) {
 
-        Customer customer = DL.GetDL(Activity_Reports.this).getCustomer(CustomerID);
+        Customer customer = DL.GetDL(Activity_Reports.this).GetCustomer(CustomerID);
 
         TextView CustomerName = (TextView) findViewById(R.id.reports_customername);
         TextView CustomerDescription = (TextView) findViewById(R.id.reports_customerdescription);
