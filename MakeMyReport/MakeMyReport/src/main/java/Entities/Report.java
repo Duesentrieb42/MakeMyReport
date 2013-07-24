@@ -1,5 +1,6 @@
 package Entities;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -11,15 +12,24 @@ public class Report {
     private int mReportID;
     private int mCustomerID;
     private String mName;
+
+    private Date mCreateTime;
+    private Date mChangeTime;
+
     private List<Report_Entry> mEntries;
 
     public Report(int ReportID,
                   int CustomorID,
-                  String Name) {
+                  String Name,
+                  Date CreateTime,
+                  Date ChangeDate) {
 
         mReportID = ReportID;
         mCustomerID = CustomorID;
         mName = Name;
+        mCreateTime = CreateTime;
+        mChangeTime = ChangeDate;
+
     }
 
     // Liefert die interne ID des Reports
@@ -37,6 +47,16 @@ public class Report {
         return mName;
     }
 
+    // Liefert das Erstelldatum
+    public Date CreateTime(){
+        return mCreateTime;
+    }
+
+    // Liefert das Änderungsdatum
+    public Date ChangeTime(){
+        return mChangeTime;
+    }
+
     // Liefert alle Einträge des Reports
     public List<Report_Entry> Entries() {
         return mEntries;
@@ -51,7 +71,7 @@ public class Report {
     public void AddNewEntryAtEnd() {
 
         int id = mEntries.size() + 1;
-        mEntries.add(id, new Report_Entry(id, id, "", null));
+        mEntries.add(id, new Report_Entry(id,0, id, "", null));
 
     }
 

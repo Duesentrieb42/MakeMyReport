@@ -13,7 +13,6 @@ import Entities.Report_Entry;
 public interface itf_DL_Report_Entries {
 
     ArrayList<Report_Entry> GetReportEntries(int ReportID);
-    Customer GetReportEntry(int ReportEntryID);
     boolean SaveReportEntry(Report_Entry ReportEntry);
     boolean UpdateReportEntry(Report_Entry ReportEntry);
     boolean DeleteReportEntry(int ReportEntryID);
@@ -23,14 +22,18 @@ public interface itf_DL_Report_Entries {
         public static String GetCreateString (){
             return "CREATE TABLE " + TableName + "("
                     + ReportEntryID.Create() +","
+                    + ReportEntryReportID.Create()+","
+                    + ReportEntryOrder.Create() +","
                     + ReportEntryText.Create()+","
                     + ReportEntryImage.Create()+")";
         }
 
         public static String TableName =  "tblReportEntries";
         public static Column ReportEntryID = new Column("ReportEntryID", "INTEGER PRIMARY KEY");
+        public static Column ReportEntryReportID = new Column("ReportID","INTEGER");
+        public static Column ReportEntryOrder = new Column("OrderNo","INTEGER");
         public static Column ReportEntryText = new Column("EntryText","Text");
-        public static Column ReportEntryImage =new Column("Image","BLOB");
+        public static Column ReportEntryImage =new Column("ImagePath","Text");
 
     }
 }

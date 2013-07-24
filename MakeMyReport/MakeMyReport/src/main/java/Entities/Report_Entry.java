@@ -11,24 +11,32 @@ import java.util.List;
 public class Report_Entry {
 
     private int mID;
+    private int mReportID;
     private int mOrderNo;
     private String mEntryDescription;
-    private Bitmap mEntryImage;
+    private String mEntryImagePath;
 
     public Report_Entry(int id,
+                        int ReportID,
                         int OrderNo,
                         String EntryDescription,
-                        Bitmap EntryImage) {
+                        String EntryImagePath) {
 
         mID = id;
+        mReportID = ReportID;
         mOrderNo = OrderNo;
         mEntryDescription = EntryDescription;
-        mEntryImage = EntryImage;
+        mEntryImagePath = EntryImagePath;
     }
 
     // Liefert die interne ID des Eintrages
     public int ID() {
         return mID;
+    }
+
+    // Liefert die interne ID des Berichtes
+    public int ReportID(){
+        return mReportID;
     }
 
     // Liefert die Position im Report des Eintrages
@@ -47,12 +55,12 @@ public class Report_Entry {
     }
 
     // Liefert das Bild des Eintrages
-    public Bitmap EntryImage() {
-        return mEntryImage;
+    public String EntryImagePath() {
+        return mEntryImagePath;
     }
 
     // Setzt das Bild des Eintrages
-    public void EntryImage(Bitmap EntryImage) {
-        mEntryImage = EntryImage;
+    public void EntryImagePath(String EntryImagePath) {
+        mEntryImagePath = EntryImagePath;
     }
 }

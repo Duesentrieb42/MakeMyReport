@@ -12,7 +12,7 @@ import Entities.Report;
 public interface itf_DL_Reports {
 
     ArrayList<Report> GetReports(int CustomerID);
-    Customer GetReport(int ReportsID);
+    Report GetReport(int ReportsID);
     boolean SaveReport(Report report);
     boolean UpdateReport(Report report);
     boolean DeleteReport(int ReportID);
@@ -22,16 +22,18 @@ public interface itf_DL_Reports {
         public static String GetCreateString (){
             return "CREATE TABLE " + TableName + "("
                     + ReportID.Create() +","
+                    + CustomerID.Create() +","
                     + ReportName.Create()+","
                     + ReportCreateDate.Create()+","
                     + ReportChangeeDate.Create()+")";
         }
 
         public static String TableName =  "tblCustomers";
-        public static Column ReportID = new Column("CustomerID", "INTEGER PRIMARY KEY");
+        public static Column ReportID = new Column("ReportID", "INTEGER PRIMARY KEY");
+        public static Column CustomerID = new Column("CustomrID", "INTEGER");
         public static Column ReportName = new Column("Name","Text");
-        public static Column ReportCreateDate =new Column("CreateDate","DATETIME");
-        public static Column ReportChangeeDate =new Column("ChangeDate","DATETIME");
+        public static Column ReportCreateDate =new Column("CreateDate","INTEGER");
+        public static Column ReportChangeeDate =new Column("ChangeDate","INTEGER");
 
     }
 }
