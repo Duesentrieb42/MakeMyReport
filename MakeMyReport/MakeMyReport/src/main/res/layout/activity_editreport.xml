@@ -17,7 +17,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="@string/Customers"
+                android:text="@string/Report_Case"
                 android:id="@+id/textView" android:textAlignment="gravity" android:gravity="center"
                 android:layout_marginLeft="20dp" android:textColor="@color/Light_Gray"/>
     </LinearLayout>
@@ -33,7 +33,7 @@
         <ImageView
                 android:layout_width="546dp"
                 android:layout_height="fill_parent"
-                android:id="@+id/imageView"
+                android:id="@+id/issuePicture"
                 android:layout_margin="10dp"/>
 
         <EditText
