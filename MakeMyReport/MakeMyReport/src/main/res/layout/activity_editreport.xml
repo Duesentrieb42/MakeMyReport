@@ -31,18 +31,20 @@
 
 
         <ImageView
-                android:layout_width="630dp"
+                android:layout_width="546dp"
                 android:layout_height="fill_parent"
                 android:id="@+id/imageView"
                 android:layout_margin="10dp"/>
 
-        <TextView
+        <EditText
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Large Text"
                 android:id="@+id/textView"
-                android:layout_margin="10dp"/>
+                android:layout_margin="10dp"
+                android:textAlignment="gravity"
+                android:gravity="left|top"/>
 
     </LinearLayout>
 
