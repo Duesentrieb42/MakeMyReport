@@ -57,15 +57,46 @@
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="@string/Customers"
+                android:text="@string/Report_Navigation"
                 android:id="@+id/textView" android:textAlignment="gravity" android:gravity="center"
                 android:layout_marginLeft="20dp" android:textColor="@color/Light_Gray"/>
     </LinearLayout>
 
     <LinearLayout
-            android:orientation="vertical"
+            android:orientation="horizontal"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:background="@color/Light_Gray">
+            android:background="@color/White"
+            android:padding="5dp">
+
+
+        <ImageButton
+                android:layout_width="100dp"
+                android:layout_height="fill_parent"
+                android:id="@+id/btnStart"
+                android:src="@drawable/navigation_back"
+                />
+
+        <ImageButton
+                android:layout_width="100dp"
+                android:layout_height="fill_parent"
+                android:id="@+id/btnPreviousItem"
+                android:src="@drawable/navigation_previous_item"
+                android:padding="5dp"/>
+
+        <ImageButton
+                android:layout_width="100dp"
+                android:layout_height="fill_parent"
+                android:id="@+id/btnNextItem"
+                android:src="@drawable/navigation_next_item"
+                android:padding="5dp"/>
+
+        <ImageButton
+                android:layout_width="100dp"
+                android:layout_height="fill_parent"
+                android:id="@+id/btnEnd"
+                android:src="@drawable/navigation_forward"
+                android:padding="5dp"/>
     </LinearLayout>
+
 </LinearLayout>
