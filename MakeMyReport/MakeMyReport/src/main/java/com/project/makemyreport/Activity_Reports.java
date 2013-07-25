@@ -110,14 +110,15 @@ public class Activity_Reports extends Activity {
                 true));
 
 
-        ExpandableListView listMainMenu = (ExpandableListView) findViewById(R.id.home_menulist);
+        ExpandableListView listMainMenu = (ExpandableListView) findViewById(R.id.reports_menu);
         listMainMenu.setAdapter(new Adapter_MainMenu(Activity_Reports.this, MenuItems));
 
-        listMainMenu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listMainMenu.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                MenuItem item = (MenuItem) parent.getItemAtPosition(position);
+            public boolean onGroupClick(ExpandableListView expandableListView, View view, int i, long l) {
+                MenuItem item = (MenuItem) expandableListView.getItemAtPosition(i);
                 OnItemClick(item.MenuType());
+                return false;
             }
         });
 

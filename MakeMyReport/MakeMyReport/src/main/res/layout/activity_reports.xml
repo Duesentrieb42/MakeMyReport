@@ -67,9 +67,12 @@
                 android:layout_height="fill_parent"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:id="@+id/textView3" android:background="@color/Dark_Gray"/>
-        <ListView
+
+        <ExpandableListView
                 android:layout_width="250dp"
                 android:layout_height="fill_parent"
-                android:id="@+id/home_menulist"/>
+                android:id="@+id/reports_menu"
+                android:headerDividersEnabled="false"
+                android:groupIndicator="@color/White"/>
     </LinearLayout>
 </LinearLayout>
