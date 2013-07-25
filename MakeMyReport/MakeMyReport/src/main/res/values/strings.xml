@@ -28,6 +28,8 @@
     <string name="Menu_Search">Search</string>
     <string name="Menu_Search_Description">Search for customers and reports</string>
 
+    <string name="Menu_Drop_Delete">Drop to delete</string>
+
     <string name="Menu_About">About</string>
     <string name="Menu_About_Description">About this app</string>
     <string name="CustomerName">Name</string>

@@ -81,28 +81,36 @@ public class Activity_Reports extends Activity {
         MenuItems.add(count, new MenuItem(BitmapFactory.decodeResource(getResources(), R.drawable.menu_add_report),
                 this.getString(R.string.Menu_New_Report),
                 this.getString(R.string.Menu_New_Report_Description),
-                MenuItem.MenuType.New_Report));
+                R.layout.home_menuitem,
+                MenuItem.MenuType.New_Report,
+                true));
         count += 1;
 
         MenuItems.add(count, new MenuItem(BitmapFactory.decodeResource(getResources(), R.drawable.menu_search),
                 this.getString(R.string.Menu_Search),
                 this.getString(R.string.Menu_Search_Description),
-                MenuItem.MenuType.Search));
+                R.layout.home_menuitem,
+                MenuItem.MenuType.Search,
+                true));
         count += 1;
 
         MenuItems.add(count, new MenuItem(BitmapFactory.decodeResource(getResources(), R.drawable.cancel),
                 this.getString(R.string.Menu_Delete_Report),
                 this.getString(R.string.Menu_Delete_report_Description),
-                MenuItem.MenuType.Delete_Report));
+                R.layout.home_menuitem,
+                MenuItem.MenuType.Delete_Report,
+                true));
         count += 1;
 
         MenuItems.add(count, new MenuItem(BitmapFactory.decodeResource(getResources(), R.drawable.menu_settings),
                 this.getString(R.string.Menu_Settings),
                 this.getString(R.string.Menu_Settings_Description),
-                MenuItem.MenuType.Settings));
+                R.layout.home_menuitem,
+                MenuItem.MenuType.Settings,
+                true));
 
 
-        ListView listMainMenu = (ListView) findViewById(R.id.home_menulist);
+        ExpandableListView listMainMenu = (ExpandableListView) findViewById(R.id.home_menulist);
         listMainMenu.setAdapter(new Adapter_MainMenu(Activity_Reports.this, MenuItems));
 
         listMainMenu.setOnItemClickListener(new AdapterView.OnItemClickListener() {

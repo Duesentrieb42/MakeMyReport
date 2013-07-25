@@ -4,6 +4,8 @@ import android.graphics.Bitmap;
 import android.view.View;
 import android.widget.ImageButton;
 
+import java.util.ArrayList;
+
 /**
  * Created by Vitali on 26.05.13.
  */
@@ -11,9 +13,11 @@ public class MenuItem {
 
     private Bitmap mImage;
     private String mName;
+    private int mViewID;
     private String mDesciption;
     private MenuType mMenuType;
     private boolean mVisible;
+    private ArrayList<MenuItem> mSubItems;
 
     public enum MenuType {
         New_Customer,
@@ -28,13 +32,17 @@ public class MenuItem {
     public MenuItem(Bitmap image,
                     String name,
                     String description,
-                    MenuType menutype) {
+                    int viewid,
+                    MenuType menutype,
+                    boolean visible) {
 
         mImage = image;
         mName = name;
         mDesciption = description;
         mMenuType = menutype;
-
+        mVisible = visible;
+        mViewID = viewid;
+        mSubItems = new ArrayList<MenuItem>();
     }
 
     public Bitmap Image() {
@@ -51,6 +59,18 @@ public class MenuItem {
 
     public MenuType MenuType() {
         return mMenuType;
+    }
+
+    public int ViewID(){
+        return mViewID;
+    }
+
+    public boolean Visible(){
+        return mVisible;
+    }
+
+    public ArrayList<MenuItem> SubItems(){
+        return mSubItems;
     }
 
 }

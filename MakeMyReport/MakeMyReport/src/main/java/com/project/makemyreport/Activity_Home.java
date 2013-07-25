@@ -9,10 +9,12 @@ import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.app.Activity;
+import android.view.DragEvent;
 import android.view.Menu;
 import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
+import android.widget.ExpandableListView;
 import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -74,33 +76,51 @@ public class Activity_Home extends Activity {
         MenuItems.add(count, new MenuItem(BitmapFactory.decodeResource(getResources(), R.drawable.menu_add_customer),
                 this.getString(R.string.Menu_New_Customer),
                 this.getString(R.string.Menu_New_Customer_Description),
-                MenuItem.MenuType.New_Customer));
+                R.layout.home_menuitem,
+                MenuItem.MenuType.New_Customer,
+                true));
         count += 1;
 
         MenuItems.add(count, new MenuItem(BitmapFactory.decodeResource(getResources(), R.drawable.menu_search),
                 this.getString(R.string.Menu_Search),
                 this.getString(R.string.Menu_Search_Description),
-                MenuItem.MenuType.Search));
+                R.layout.home_menuitem,
+                MenuItem.MenuType.Search,
+                true));
         count += 1;
 
-        MenuItems.add(count, new MenuItem(BitmapFactory.decodeResource(getResources(), R.drawable.cancel),
-                this.getString(R.string.Menu_Delete_Customer),
-                this.getString(R.string.Menu_Delete_Customer_Description),
-                MenuItem.MenuType.Delete_Customer));
+        MenuItem DeleteItem = new MenuItem(BitmapFactory.decodeResource(getResources(), R.drawable.cancel),
+                                            this.getString(R.string.Menu_Delete_Customer),
+                                            this.getString(R.string.Menu_Delete_Customer_Description),
+                                            R.layout.home_menuitem,
+                                            MenuItem.MenuType.Delete_Customer,
+                                            true);
+
+        DeleteItem.SubItems().add(new MenuItem(BitmapFactory.decodeResource(getResources(), R.drawable.trash),
+                                    this.getString(R.string.Menu_Drop_Delete),
+                                    null,
+                                    R.layout.home_menuitem_two,
+                                    MenuItem.MenuType.Delete_Customer,
+                                    true));
+        MenuItems.add(count, DeleteItem);
         count += 1;
 
         MenuItems.add(count, new MenuItem(BitmapFactory.decodeResource(getResources(), R.drawable.menu_settings),
                 this.getString(R.string.Menu_Settings),
                 this.getString(R.string.Menu_Settings_Description),
-                MenuItem.MenuType.Settings));
+                R.layout.home_menuitem,
+                MenuItem.MenuType.Settings,
+                true));
         count += 1;
 
         MenuItems.add(count, new MenuItem(BitmapFactory.decodeResource(getResources(), R.drawable.menu_about),
                 this.getString(R.string.Menu_About),
                 this.getString(R.string.Menu_About_Description),
-                MenuItem.MenuType.About));
+                R.layout.home_menuitem,
+                MenuItem.MenuType.About,
+                true));
 
-        ListView listMainMenu = (ListView) findViewById(R.id.home_menulist);
+        ExpandableListView listMainMenu = (ExpandableListView) findViewById(R.id.home_menulist);
         listMainMenu.setAdapter(new Adapter_MainMenu(Activity_Home.this, MenuItems));
 
         listMainMenu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -110,6 +130,7 @@ public class Activity_Home extends Activity {
                 OnItemClick(item.MenuType());
             }
         });
+
     }
 
     private void OnCustomerClick(Customer customer) {
