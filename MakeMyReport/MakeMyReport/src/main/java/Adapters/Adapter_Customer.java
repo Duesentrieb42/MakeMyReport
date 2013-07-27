@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.project.makemyreport.R;
 
@@ -46,7 +47,7 @@ public class Adapter_Customer extends BaseAdapter {
 
 
     @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
+    public View getView(final int i, View view, ViewGroup viewGroup) {
 
         View row = view;
         MenuItemHolder holder = null;
@@ -60,8 +61,40 @@ public class Adapter_Customer extends BaseAdapter {
 
             holder.Name = (TextView) row.findViewById(R.id.home_customer_name);
             holder.Image = (ImageView) row.findViewById(R.id.home_customer_image);
+            holder.ShowOptions = (ImageView) row.findViewById(R.id.home_customer_showoptions);
+
+/**
+
+            final View DeleteButton = (View)row.findViewById(R.id.home_customer_options);
+            holder.DeleteButton = DeleteButton;
+            DeleteButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mCustomers.remove(i);
+                }
+            });
+ **/
+
+            final LinearLayout Options = (LinearLayout) row.findViewById(R.id.home_customer_options);
+            holder.Options = Options;
 
             row.setTag(holder);
+
+            holder.ShowOptions.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    if (Options.getVisibility() == View.GONE){
+                        Options.setVisibility(View.VISIBLE);
+                    } else{
+                        Options.setVisibility(View.GONE);
+                    }
+
+                }
+            });
+
+
+
         } else {
             holder = (MenuItemHolder) row.getTag();
         }
@@ -71,13 +104,19 @@ public class Adapter_Customer extends BaseAdapter {
             holder.Image.setImageBitmap(customer.Logo());
         }
 
+        holder.Options.setVisibility(View.GONE);
         return row;
     }
+
 
     static class MenuItemHolder {
 
         public TextView Name;
         public ImageView Image;
+        public ImageView ShowOptions;
+        public LinearLayout Options;
+
+        public View DeleteButton;
 
     }
 

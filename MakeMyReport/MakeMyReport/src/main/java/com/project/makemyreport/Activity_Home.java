@@ -9,14 +9,12 @@ import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.app.Activity;
-import android.view.DragEvent;
 import android.view.Menu;
 import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ExpandableListView;
 import android.widget.GridView;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -122,6 +120,15 @@ public class Activity_Home extends Activity {
 
         ExpandableListView listMainMenu = (ExpandableListView) findViewById(R.id.home_menulist);
         listMainMenu.setAdapter(new Adapter_MainMenu(Activity_Home.this, MenuItems));
+
+        listMainMenu.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
+            @Override
+            public boolean onGroupClick(ExpandableListView expandableListView, View view, int i, long l) {
+                MenuItem item = (MenuItem) expandableListView.getItemAtPosition(i);
+                OnItemClick(item.MenuType());
+                return false;
+            }
+        });
 
         listMainMenu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
