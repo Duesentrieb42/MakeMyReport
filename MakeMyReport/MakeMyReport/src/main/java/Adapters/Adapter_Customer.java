@@ -1,5 +1,6 @@
 package Adapters;
 
+import DAL.DL;
 import Entities.Customer;
 import android.app.Activity;
 import android.content.Context;
@@ -63,17 +64,19 @@ public class Adapter_Customer extends BaseAdapter {
             holder.Image = (ImageView) row.findViewById(R.id.home_customer_image);
             holder.ShowOptions = (ImageView) row.findViewById(R.id.home_customer_showoptions);
 
-/**
 
             final View DeleteButton = (View)row.findViewById(R.id.home_customer_options);
             holder.DeleteButton = DeleteButton;
             DeleteButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+
+                    DL.GetDL(mContext).DeleteCustomer(mCustomers.get(i).CustomerID());
                     mCustomers.remove(i);
+                    notifyDataSetInvalidated();
+
                 }
             });
- **/
 
             final LinearLayout Options = (LinearLayout) row.findViewById(R.id.home_customer_options);
             holder.Options = Options;

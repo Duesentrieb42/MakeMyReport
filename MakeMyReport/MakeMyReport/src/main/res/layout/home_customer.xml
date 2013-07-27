@@ -92,7 +92,8 @@
                 <include
                         android:layout_width="wrap_content"
                         android:layout_height="45dp"
-                        layout="@+id/cusomer_button_delete"/>
+                        android:id="@+id/customer_button_delete"
+                        layout="@layout/button_delete"/>
 
             </LinearLayout>
 
