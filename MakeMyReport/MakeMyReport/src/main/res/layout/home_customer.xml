@@ -90,6 +90,7 @@
             <include
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
+                    android:id="@+id/customer_button_edit"
                     layout="@layout/button_edit_customer"/>
 
             <include

@@ -4,6 +4,7 @@ import DAL.DL;
 import Entities.Customer;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.project.makemyreport.Activity_EditReport;
 import com.project.makemyreport.R;
 
 import java.util.ArrayList;
@@ -65,7 +68,7 @@ public class Adapter_Customer extends BaseAdapter {
             holder.ShowOptions = (ImageView) row.findViewById(R.id.home_customer_showoptions);
 
 
-            final View DeleteButton = (View)row.findViewById(R.id.home_customer_options);
+            final View DeleteButton = (View)row.findViewById(R.id.customer_button_delete);
             holder.DeleteButton = DeleteButton;
             DeleteButton.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -78,11 +81,18 @@ public class Adapter_Customer extends BaseAdapter {
                 }
             });
 
+            final View EditButton = (View)row.findViewById(R.id.customer_button_edit);
+            holder.EditButton = EditButton;
+            EditButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+
+                }
+            });
+
             final LinearLayout Options = (LinearLayout) row.findViewById(R.id.home_customer_options);
             holder.Options = Options;
-
-
-
             holder.ShowOptions.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -121,6 +131,7 @@ public class Adapter_Customer extends BaseAdapter {
         public LinearLayout Options;
 
         public View DeleteButton;
+        public View EditButton;
 
     }
 
