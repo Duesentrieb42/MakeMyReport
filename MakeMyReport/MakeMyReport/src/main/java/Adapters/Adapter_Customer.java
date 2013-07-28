@@ -81,7 +81,7 @@ public class Adapter_Customer extends BaseAdapter {
             final LinearLayout Options = (LinearLayout) row.findViewById(R.id.home_customer_options);
             holder.Options = Options;
 
-            row.setTag(holder);
+
 
             holder.ShowOptions.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -96,7 +96,7 @@ public class Adapter_Customer extends BaseAdapter {
                 }
             });
 
-
+            row.setTag(holder);
 
         } else {
             holder = (MenuItemHolder) row.getTag();
@@ -106,6 +106,7 @@ public class Adapter_Customer extends BaseAdapter {
         if (customer.Logo() != null) {
             holder.Image.setImageBitmap(customer.Logo());
         }
+
 
         holder.Options.setVisibility(View.GONE);
         return row;

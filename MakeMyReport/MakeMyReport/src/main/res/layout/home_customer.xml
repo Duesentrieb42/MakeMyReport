@@ -1,103 +1,107 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
+<FrameLayout    xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="104dp">
+
+<LinearLayout android:orientation="vertical"
               android:layout_width="300dp"
-              android:layout_height="116dp" android:gravity="center_horizontal"
-        >
+              android:layout_height="wrap_content" android:gravity="center_horizontal"
+              android:background="@drawable/roundrectangleshadow"
+              android:paddingBottom="3dp">
+
+
+
 
     <LinearLayout
-            android:orientation="vertical"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:padding="5dp"
-            android:background="@drawable/roundrectangleshadow">
+            android:orientation="horizontal"
+            android:layout_marginLeft="1dp">
 
-        <LinearLayout
-                android:layout_width="fill_parent"
+        <ImageView
+                android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:orientation="horizontal"
-                >
-
-            <ImageView
-                    android:layout_width="60dp"
-                    android:layout_height="fill_parent"
-                    android:id="@+id/home_customer_image" android:layout_gravity="left|center_vertical"
-                    android:src="@drawable/customer"/>
-
-            <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="190dp"
-                    android:layout_height="60dp"
-                    android:layout_marginLeft="10dp">
-
-                <TextView
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="Small Text"
-                        android:id="@+id/home_customer_name"
-                        />
-
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:text="Small Text"
-                        android:id="@+id/textView"
-                        android:textColor="@color/Dark_Gray"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:layout_gravity="bottom|top"
-                    android:gravity="bottom|left">
-
-                <ImageView
-                        android:layout_width="fill_parent"
-                        android:layout_height="fill_parent"
-                        android:id="@+id/home_customer_showoptions"
-                        android:src="@drawable/option_gray"
-                        android:contentDescription=""
-                        android:layout_gravity="right|top"
-                        android:padding="5dp"/>
-            </LinearLayout>
-
-
-        </LinearLayout>
+                android:id="@+id/home_customer_image" android:layout_gravity="left|center_vertical"
+                android:src="@drawable/customer"/>
 
         <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:id="@+id/home_customer_options"
-                >
+                android:layout_width="190dp"
+                android:layout_height="60dp"
+                android:layout_marginLeft="10dp"
+                android:padding="5dp">
 
             <TextView
                     android:layout_width="fill_parent"
-                    android:layout_height="1dp"
-                    android:id="@+id/textView2"
-                    android:background="@color/Dark_Gray"/>
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Small Text"
+                    android:id="@+id/home_customer_name"
+                    />
 
-            <LinearLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content">
-
-                <include
-                        android:layout_width="wrap_content"
-                        android:layout_height="fill_parent"
-                        layout="@layout/button_edit_customer"/>
-
-                <include
-                        android:layout_width="wrap_content"
-                        android:layout_height="45dp"
-                        android:id="@+id/customer_button_delete"
-                        layout="@layout/button_delete"/>
-
-            </LinearLayout>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="Small Text"
+                    android:id="@+id/textView"
+                    android:textColor="@color/Dark_Gray"/>
 
         </LinearLayout>
+
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_gravity="bottom|top"
+                android:gravity="bottom|left">
+
+            <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/home_customer_showoptions"
+                    android:src="@drawable/option_gray"
+                    android:contentDescription=""
+                    android:layout_gravity="right|top"
+                    android:padding="5dp"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/home_customer_options"
+            >
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:id="@+id/textView2"
+                android:background="@color/Dark_Gray"
+                android:layout_marginLeft="1dp"
+                android:layout_marginRight="3dp"/>
+
+        <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="40dp">
+
+            <include
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    layout="@layout/button_edit_customer"/>
+
+            <include
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/customer_button_delete"
+                    layout="@layout/button_delete"
+                    android:layout_gravity="right"/>
+
+        </LinearLayout>
+
     </LinearLayout>
 
 </LinearLayout>
+</FrameLayout>

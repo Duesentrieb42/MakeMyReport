@@ -78,7 +78,7 @@ public class Activity_Home extends Activity {
                 MenuItem.MenuType.New_Customer,
                 true));
         count += 1;
-
+/**
         MenuItems.add(count, new MenuItem(BitmapFactory.decodeResource(getResources(), R.drawable.menu_search),
                 this.getString(R.string.Menu_Search),
                 this.getString(R.string.Menu_Search_Description),
@@ -86,23 +86,7 @@ public class Activity_Home extends Activity {
                 MenuItem.MenuType.Search,
                 true));
         count += 1;
-
-        MenuItem DeleteItem = new MenuItem(BitmapFactory.decodeResource(getResources(), R.drawable.cancel),
-                                            this.getString(R.string.Menu_Delete_Customer),
-                                            this.getString(R.string.Menu_Delete_Customer_Description),
-                                            R.layout.home_menuitem,
-                                            MenuItem.MenuType.Delete_Customer,
-                                            true);
-
-        DeleteItem.SubItems().add(new MenuItem(BitmapFactory.decodeResource(getResources(), R.drawable.trash),
-                                    this.getString(R.string.Menu_Drop_Delete),
-                                    null,
-                                    R.layout.home_menuitem_two,
-                                    MenuItem.MenuType.Delete_Customer,
-                                    true));
-        MenuItems.add(count, DeleteItem);
-        count += 1;
-
+**/
         MenuItems.add(count, new MenuItem(BitmapFactory.decodeResource(getResources(), R.drawable.menu_settings),
                 this.getString(R.string.Menu_Settings),
                 this.getString(R.string.Menu_Settings_Description),
