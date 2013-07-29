@@ -19,7 +19,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class Activity_Home extends Activity {
+public class Activity_Home extends Activity implements Customer.EditCustomerListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,11 +55,15 @@ public class Activity_Home extends Activity {
         ArrayList<Customer> Customers = DL.GetDL(Activity_Home.this).GetCustomers();
 
         GridView gridCustomers = (GridView) findViewById(R.id.home_customers);
-        gridCustomers.setAdapter(new Adapter_Customer(Activity_Home.this, Customers));
+        Adapter_Customer adapter = new Adapter_Customer(Activity_Home.this, Customers);
+
+        adapter.addEditCustomerListener(this);
+        gridCustomers.setAdapter(adapter);
 
         gridCustomers.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(Activity_Home.this,"View: " + view.toString(),Toast.LENGTH_LONG);
                 Customer customer = (Customer) parent.getItemAtPosition(position);
                 OnCustomerClick(customer);
             }
@@ -78,15 +82,7 @@ public class Activity_Home extends Activity {
                 MenuItem.MenuType.New_Customer,
                 true));
         count += 1;
-/**
-        MenuItems.add(count, new MenuItem(BitmapFactory.decodeResource(getResources(), R.drawable.menu_search),
-                this.getString(R.string.Menu_Search),
-                this.getString(R.string.Menu_Search_Description),
-                R.layout.home_menuitem,
-                MenuItem.MenuType.Search,
-                true));
-        count += 1;
-**/
+
         MenuItems.add(count, new MenuItem(BitmapFactory.decodeResource(getResources(), R.drawable.menu_settings),
                 this.getString(R.string.Menu_Settings),
                 this.getString(R.string.Menu_Settings_Description),
@@ -167,5 +163,11 @@ public class Activity_Home extends Activity {
 
     }
 
+    @Override
+    public void CustomerEdit(Customer.Adapter_Customer_EventArgs e) {
+        Intent intent = new Intent(this, Activity_EditCustomer.class);
 
+        intent.putExtra("CustomerID",e.CustomerID());
+        startActivity(intent);
+    }
 }

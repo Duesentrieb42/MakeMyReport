@@ -156,7 +156,20 @@ public class DL extends SQLiteOpenHelper implements itf_DL_Customers,itf_DL_Repo
 
     @Override
     public boolean UpdateCustomer(Customer customer) {
-        return false;
+        ContentValues args = new ContentValues();
+
+        args.put(CustomerTable.CustomerName.Name(), customer.Name());
+        args.put(CustomerTable.CustomerDescription.Name(), customer.Description());
+
+        // Image nach Byte-Array
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        customer.Logo().compress(Bitmap.CompressFormat.PNG, 100, stream);
+        byte[] byteArray = stream.toByteArray();
+
+        args.put(CustomerTable.CustomerLogo.Name(), byteArray);
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        return db.update(CustomerTable.TableName, args, CustomerTable.CustomerID.Name() + "=" + customer.CustomerID(), null) > 0;
     }
 
     @Override

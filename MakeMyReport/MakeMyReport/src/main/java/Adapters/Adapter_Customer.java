@@ -5,6 +5,7 @@ import Entities.Customer;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.util.EventLog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,26 +13,31 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.project.makemyreport.Activity_EditReport;
 import com.project.makemyreport.R;
 
 import java.util.ArrayList;
+import java.util.EventListener;
+import java.util.EventObject;
 
 
 /**
  * Created by Vitali on 14.07.13.
  */
-public class Adapter_Customer extends BaseAdapter {
+public class Adapter_Customer extends BaseAdapter implements Customer.CustomerEventgenerator{
 
     private ArrayList<Customer> mCustomers = null;
     private Context mContext;
     private int mLayoutResourceId;
+    private ArrayList<Customer.EditCustomerListener> EditCustomerListeners;
 
     public Adapter_Customer(Context context, ArrayList<Customer> Customers) {
         mContext = context;
         mCustomers = Customers;
         mLayoutResourceId = R.layout.home_customer;
+        EditCustomerListeners = new ArrayList<Customer.EditCustomerListener>();
     }
 
     @Override
@@ -50,6 +56,7 @@ public class Adapter_Customer extends BaseAdapter {
     }
 
 
+
     @Override
     public View getView(final int i, View view, ViewGroup viewGroup) {
 
@@ -57,6 +64,7 @@ public class Adapter_Customer extends BaseAdapter {
         MenuItemHolder holder = null;
 
         final Customer customer = mCustomers.get(i);
+
         if (row == null) {
             LayoutInflater inflater = ((Activity) mContext).getLayoutInflater();
             row = inflater.inflate(mLayoutResourceId, viewGroup, false);
@@ -67,6 +75,15 @@ public class Adapter_Customer extends BaseAdapter {
             holder.Image = (ImageView) row.findViewById(R.id.home_customer_image);
             holder.ShowOptions = (ImageView) row.findViewById(R.id.home_customer_showoptions);
 
+
+            final View EditCustomer = (View)row.findViewById(R.id.customer_button_edit);
+            holder.EditButton = EditCustomer;
+            EditCustomer.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    EditCustomerListeners.get(0).CustomerEdit(new Customer.Adapter_Customer_EventArgs(this,customer.CustomerID()));
+                }
+            });
 
             final View DeleteButton = (View)row.findViewById(R.id.customer_button_delete);
             holder.DeleteButton = DeleteButton;
@@ -81,15 +98,6 @@ public class Adapter_Customer extends BaseAdapter {
                 }
             });
 
-            final View EditButton = (View)row.findViewById(R.id.customer_button_edit);
-            holder.EditButton = EditButton;
-            EditButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-
-                }
-            });
 
             final LinearLayout Options = (LinearLayout) row.findViewById(R.id.home_customer_options);
             holder.Options = Options;
@@ -120,6 +128,11 @@ public class Adapter_Customer extends BaseAdapter {
 
         holder.Options.setVisibility(View.GONE);
         return row;
+    }
+
+    @Override
+    public void addEditCustomerListener(Customer.EditCustomerListener listener) {
+        EditCustomerListeners.add(listener);
     }
 
 

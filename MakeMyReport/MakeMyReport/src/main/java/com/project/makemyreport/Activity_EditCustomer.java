@@ -29,6 +29,17 @@ public class Activity_EditCustomer extends Activity {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_editcustomer);
 
+        int CustomerID = getIntent().getIntExtra("CustomerID", -1);
+
+        if (CustomerID>=0){
+            initEdit(CustomerID);
+        } else{
+            initNew();
+        }
+
+    }
+
+    public void initNew(){
 
         TextView pickimage = (TextView) findViewById(R.id.editcustomer_pickimage);
         pickimage.setOnClickListener(new View.OnClickListener() {
@@ -56,6 +67,49 @@ public class Activity_EditCustomer extends Activity {
                 SaveCustomer();
             }
         });
+
+    }
+
+    public void initEdit(final int CustomerID){
+
+        Customer customer = DL.GetDL(this).GetCustomer(CustomerID);
+
+        mLogo=Bitmap.createScaledBitmap(customer.Logo(), 800,800, true);
+        ImageView imageView = (ImageView) findViewById(R.id.editcustomer_logo);
+        imageView.setImageBitmap(mLogo);
+
+        TextView name = (TextView) findViewById(R.id.editcustomer_name);
+        TextView description = (TextView) findViewById(R.id.editcustomer_name);
+
+        name.setText(customer.Name());
+        description.setText(customer.Description());
+
+        TextView pickimage = (TextView) findViewById(R.id.editcustomer_pickimage);
+        pickimage.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+
+                startActivityForResult(i, RESULT_LOAD_IMAGE);
+            }
+        });
+
+        View cancel = (View) findViewById(R.id.editcustomer_cancel);
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
+        View save = (View) findViewById(R.id.editcustomer_save);
+        save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                UpdateCustomer(CustomerID);
+            }
+        });
     }
 
     private void SaveCustomer() {
@@ -66,6 +120,29 @@ public class Activity_EditCustomer extends Activity {
             TextView description = (TextView) findViewById(R.id.editcustomer_name);
 
             if (DL.GetDL(Activity_EditCustomer.this).SaveCustomer(new Customer(-1,
+                    name.getText().toString(),
+                    description.getText().toString(),
+                    mLogo))) {
+
+                this.finish();
+            } else {
+                Toast.makeText(Activity_EditCustomer.this, ":/", Toast.LENGTH_LONG);
+            }
+
+        } else {
+            Toast.makeText(Activity_EditCustomer.this, "Kein Bild", Toast.LENGTH_LONG);
+        }
+
+    }
+
+    private void UpdateCustomer(int CustomerID) {
+
+        if (mLogo != null) {
+
+            TextView name = (TextView) findViewById(R.id.editcustomer_name);
+            TextView description = (TextView) findViewById(R.id.editcustomer_name);
+
+            if (DL.GetDL(Activity_EditCustomer.this).UpdateCustomer(new Customer(CustomerID,
                     name.getText().toString(),
                     description.getText().toString(),
                     mLogo))) {
