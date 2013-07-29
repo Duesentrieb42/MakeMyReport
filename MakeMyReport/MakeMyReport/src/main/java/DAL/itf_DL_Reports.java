@@ -12,6 +12,7 @@ import Entities.Report;
 public interface itf_DL_Reports {
 
     ArrayList<Report> GetReports(int CustomerID);
+    ArrayList<Report> GetLastReports(int count);
     Report GetReport(int ReportsID);
     boolean SaveReport(Report report);
     boolean UpdateReport(Report report);

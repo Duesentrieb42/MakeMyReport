@@ -187,7 +187,39 @@ public class DL extends SQLiteOpenHelper implements itf_DL_Customers,itf_DL_Repo
 
         ArrayList<Report> reports = new ArrayList<Report>();
 
-        String selectQuery = "SELECT  * FROM " + ReportTable.TableName;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(ReportTable.TableName, new String[] { ReportTable.ReportID.Name(),
+                ReportTable.CustomerID.Name(),
+                ReportTable.ReportName.Name(),
+                ReportTable.ReportCreateDate.Name(),
+                ReportTable.ReportChangeeDate.Name()},
+                ReportTable.CustomerID.Name() + "=?",
+                new String[] { String.valueOf(CustomerID) }, null, null, null, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+
+                int id = Integer.parseInt(cursor.getString(0));
+                String Name = cursor.getString(2);
+                Date CreateDate = new Date(cursor.getLong(3));
+                Date ChangeDate = new Date(cursor.getLong(4));
+
+                reports.add(new Report(id,CustomerID,Name,CreateDate,ChangeDate));
+
+            } while (cursor.moveToNext());
+        }
+
+        return reports;
+    }
+
+    @Override
+    public ArrayList<Report> GetLastReports(int count) {
+
+        ArrayList<Report> reports = new ArrayList<Report>();
+
+        String selectQuery = "SELECT * FROM " + ReportTable.TableName  +
+                             " ORDER BY " + ReportTable.ReportChangeeDate.Name() +
+                             " LIMIT " + count;
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
@@ -196,6 +228,7 @@ public class DL extends SQLiteOpenHelper implements itf_DL_Customers,itf_DL_Repo
             do {
 
                 int id = Integer.parseInt(cursor.getString(0));
+                int CustomerID = Integer.parseInt(cursor.getString(1));
                 String Name = cursor.getString(2);
                 Date CreateDate = new Date(cursor.getLong(3));
                 Date ChangeDate = new Date(cursor.getLong(4));

@@ -2,9 +2,12 @@ package com.project.makemyreport;
 
 import Adapters.Adapter_Customer;
 import Adapters.Adapter_MainMenu;
+import Adapters.Adapter_Report;
 import DAL.DL;
 import Entities.Customer;
 import Entities.MenuItem;
+import Entities.Report;
+
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -26,21 +29,17 @@ public class Activity_Home extends Activity implements Customer.EditCustomerList
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_home);
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
 
         InitMenu();
-        InitCustomers();
     }
+
 
     @Override
     protected void onResume() {
         super.onResume();
 
         InitCustomers();
+        InitLastReports();
     }
 
     @Override
@@ -48,6 +47,21 @@ public class Activity_Home extends Activity implements Customer.EditCustomerList
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.activity__home, menu);
         return true;
+    }
+
+    private void InitLastReports(){
+        ArrayList<Report> Reports = DL.GetDL(this).GetLastReports(10);
+
+        GridView gridReports = (GridView) findViewById(R.id.home_lastreports);
+        gridReports.setAdapter(new Adapter_Report(this, Reports));
+
+        gridReports.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Report report = (Report) parent.getItemAtPosition(position);
+                OnReportClick(report);
+            }
+        });
     }
 
     private void InitCustomers() {
@@ -159,6 +173,19 @@ public class Activity_Home extends Activity implements Customer.EditCustomerList
                 Toast.makeText(getApplicationContext(), "In Bearbeitung.", Toast.LENGTH_SHORT).show();
                 break;
         }
+
+    }
+
+    private void OnReportClick(Report report) {
+
+        Intent intent = new Intent(this, Activity_EditReport.class);
+
+        int args[] = new int[2];
+        args[0] = report.CustomerID();
+        args[1] = report.ReportID();
+        intent.putExtra("args", args);
+
+        startActivity(intent);
 
     }
 

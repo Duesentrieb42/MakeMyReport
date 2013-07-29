@@ -38,7 +38,10 @@ public class Activity_EditReport extends Activity {
         int ReportsID = args[1];
 
         if (ReportsID < 0){
-            DL.GetDL(this).SaveReport(new Report(ReportsID,CustomerID,"untitled",new Date(),new Date()));
+            Date date  = new Date();
+            String name = date.toString();
+
+            DL.GetDL(this).SaveReport(new Report(ReportsID,CustomerID,name,date,date));
         }
 
         InitIssue();

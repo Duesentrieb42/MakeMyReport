@@ -30,14 +30,15 @@ public class Activity_Reports extends Activity {
 
         int mCustomerID = getIntent().getIntExtra("CustomerID", 0);
         InitMenu(mCustomerID);
-        InitCustomerDate(mCustomerID);
-        InitReports(mCustomerID);
+
     }
 
     @Override
     protected void onResume() {
         super.onResume();
 
+        int mCustomerID = getIntent().getIntExtra("CustomerID", 0);
+        InitCustomerDate(mCustomerID);
         InitReports(mCustomerID);
     }
 
