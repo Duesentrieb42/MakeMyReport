@@ -12,6 +12,11 @@ import android.view.Window;
 import android.view.View;
 import android.widget.ImageView;
 
+import java.util.Date;
+
+import DAL.DL;
+import Entities.Report;
+
 /**
  * Created by Vitali on 15.07.13.
  */
@@ -25,7 +30,16 @@ public class Activity_EditReport extends Activity {
         setContentView(R.layout.activity_editreport);
 
         // -1 = Neuer Report ansonsten interne ID des Reports
-        int ReportID = getIntent().getIntExtra("ReportID", -1);
+
+        int args[] = new int[2];
+        args = getIntent().getIntArrayExtra("args");
+
+        int CustomerID = args[0];
+        int ReportsID = args[1];
+
+        if (ReportsID < 0){
+            DL.GetDL(this).SaveReport(new Report(ReportsID,CustomerID,"untitled",new Date(),new Date()));
+        }
 
         InitIssue();
 

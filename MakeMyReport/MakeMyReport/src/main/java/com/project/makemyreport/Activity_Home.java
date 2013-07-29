@@ -63,7 +63,6 @@ public class Activity_Home extends Activity implements Customer.EditCustomerList
         gridCustomers.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(Activity_Home.this,"View: " + view.toString(),Toast.LENGTH_LONG);
                 Customer customer = (Customer) parent.getItemAtPosition(position);
                 OnCustomerClick(customer);
             }

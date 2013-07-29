@@ -20,17 +20,25 @@ import java.util.ArrayList;
  * Created by Vitali on 14.07.13.
  */
 public class Activity_Reports extends Activity {
+
+    int mCustomerID;
+
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_reports);
 
-        int CustomerID = getIntent().getIntExtra("CustomerID", 0);
+        int mCustomerID = getIntent().getIntExtra("CustomerID", 0);
+        InitMenu(mCustomerID);
+        InitCustomerDate(mCustomerID);
+        InitReports(mCustomerID);
+    }
 
-        InitMenu();
-        InitCustomerDate(CustomerID);
-        InitReports(CustomerID);
+    @Override
+    protected void onResume() {
+        super.onResume();
 
+        InitReports(mCustomerID);
     }
 
     private void InitReports(int CustomerID) {
@@ -53,13 +61,16 @@ public class Activity_Reports extends Activity {
 
         Intent intent = new Intent(this, Activity_EditReport.class);
 
-        intent.putExtra("ReportID", report.ReportID());
+        int args[] = new int[2];
+        args[0] = report.CustomerID();
+        args[1] = report.ReportID();
+        intent.putExtra("args", args);
 
         startActivity(intent);
 
     }
 
-    private void InitCustomerDate(int CustomerID) {
+    private void InitCustomerDate(final int CustomerID) {
 
         Customer customer = DL.GetDL(Activity_Reports.this).GetCustomer(CustomerID);
 
@@ -73,7 +84,7 @@ public class Activity_Reports extends Activity {
 
     }
 
-    private void InitMenu() {
+    private void InitMenu(final int CustomerID) {
 
         ArrayList<MenuItem> MenuItems = new ArrayList<MenuItem>();
         int count = 0;
@@ -117,7 +128,7 @@ public class Activity_Reports extends Activity {
             @Override
             public boolean onGroupClick(ExpandableListView expandableListView, View view, int i, long l) {
                 MenuItem item = (MenuItem) expandableListView.getItemAtPosition(i);
-                OnItemClick(item.MenuType());
+                OnItemClick(item.MenuType(),CustomerID);
                 return false;
             }
         });
@@ -125,12 +136,18 @@ public class Activity_Reports extends Activity {
 
     }
 
-    private void OnItemClick(MenuItem.MenuType menutype) {
+    private void OnItemClick(MenuItem.MenuType menutype, int CustomerID) {
 
         switch (menutype) {
             case New_Report:
 
                 Intent intent = new Intent(this, Activity_EditReport.class);
+
+                int args[] = new int[2];
+                args[0] = CustomerID;
+                args[1] = -1;
+                intent.putExtra("args", args);
+
                 startActivity(intent);
 
                 break;
