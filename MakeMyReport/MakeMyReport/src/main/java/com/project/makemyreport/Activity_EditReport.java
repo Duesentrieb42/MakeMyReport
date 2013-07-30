@@ -45,6 +45,10 @@ public class Activity_EditReport extends Activity {
         }
 
         InitIssue();
+        InitNavigationButtons(null);
+    }
+
+    private void InitNavigationButtons(Report report){
 
     }
 
