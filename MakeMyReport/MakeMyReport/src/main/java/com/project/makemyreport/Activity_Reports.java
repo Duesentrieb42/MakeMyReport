@@ -56,11 +56,33 @@ public class Activity_Reports extends Activity {
                 OnReportClick(report);
             }
         });
+
+        gridReports.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long l) {
+                Report report = (Report) parent.getItemAtPosition(position);
+                OnReportLongClick(report);
+                return true;
+            }
+        });
     }
 
     private void OnReportClick(Report report) {
 
         Intent intent = new Intent(this, Activity_EditReport.class);
+
+        int args[] = new int[2];
+        args[0] = report.CustomerID();
+        args[1] = report.ReportID();
+        intent.putExtra("args", args);
+
+        startActivity(intent);
+
+    }
+
+    private void OnReportLongClick(Report report) {
+
+        Intent intent = new Intent(this, Activity_ReportOptions.class);
 
         int args[] = new int[2];
         args[0] = report.CustomerID();

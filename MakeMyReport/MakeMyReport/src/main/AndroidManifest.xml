@@ -25,6 +25,7 @@
         <activity android:name=".Activity_Reports" android:label="Reports"/>
         <activity android:name=".Activity_EditReport"/>
         <activity android:name=".Activity_EditCustomer" android:theme="@android:style/Theme.Dialog"/>
+        <activity android:name=".Activity_ReportOptions" android:theme="@android:style/Theme.Dialog"/>
     </application>
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>

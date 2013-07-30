@@ -5,7 +5,7 @@
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:gravity="center_vertical"
-              android:padding="10dp">
+        >
 
     <ImageView
             android:layout_width="35dp"
@@ -17,7 +17,7 @@
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
-            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="@string/Button_Edit_Customer"
             android:id="@+id/textView"
             android:textColor="@color/Dark_Gray"

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="300dp"
+              android:layout_height="wrap_content" android:padding="10dp" android:background="@color/White">
+
+    <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="30dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/NewCustomer"
+            android:id="@+id/report_option_name"
+            android:layout_gravity="center"
+            android:textColor="@color/Light_Gray"
+            android:gravity="center_vertical"
+            android:background="@color/Dark_Gray"
+            android:paddingLeft="5dp"/>
+
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+        <ImageView
+                android:layout_width="60dp"
+                android:layout_height="80dp"
+                android:id="@+id/imageView"
+                android:src="@drawable/menu_add_report"/>
+
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+
+            <include
+                    android:layout_width="fill_parent"
+                    android:layout_height="50dp"
+                    layout="@layout/button_delete"
+                    android:id="@+id/report_option_button_delete"/>
+
+            <include
+                    android:layout_width="fill_parent"
+                    android:layout_height="50dp"
+                    layout="@layout/button_cancel"
+                    android:id="@+id/report_option_button_cancel"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
