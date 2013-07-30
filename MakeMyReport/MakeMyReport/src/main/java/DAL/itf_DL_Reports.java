@@ -17,6 +17,7 @@ public interface itf_DL_Reports {
     boolean SaveReport(Report report);
     boolean UpdateReport(Report report);
     boolean DeleteReport(int ReportID);
+    boolean DeleteReports(int CustomerID);
 
     public static class ReportTable{
 

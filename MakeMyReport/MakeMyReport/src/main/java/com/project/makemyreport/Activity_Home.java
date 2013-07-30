@@ -22,7 +22,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class Activity_Home extends Activity implements Customer.EditCustomerListener {
+public class Activity_Home extends Activity implements Customer.EditCustomerListener, Customer.DeleteCustomerListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +72,7 @@ public class Activity_Home extends Activity implements Customer.EditCustomerList
         Adapter_Customer adapter = new Adapter_Customer(Activity_Home.this, Customers);
 
         adapter.addEditCustomerListener(this);
+        adapter.addDeleteCustomerListener(this);
         gridCustomers.setAdapter(adapter);
 
         gridCustomers.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -195,5 +196,12 @@ public class Activity_Home extends Activity implements Customer.EditCustomerList
 
         intent.putExtra("CustomerID",e.CustomerID());
         startActivity(intent);
+    }
+
+    @Override
+    public void CustomerDelete(Customer.Adapter_Customer_EventArgs e) {
+        DL.GetDL(this).DeleteCustomer(e.CustomerID());
+        DL.GetDL(this).DeleteReports(e.CustomerID());
+        InitLastReports();
     }
 }

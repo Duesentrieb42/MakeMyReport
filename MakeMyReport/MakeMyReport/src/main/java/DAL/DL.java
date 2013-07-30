@@ -300,7 +300,14 @@ public class DL extends SQLiteOpenHelper implements itf_DL_Customers,itf_DL_Repo
 
     @Override
     public boolean DeleteReport(int ReportID) {
-        return false;
+        SQLiteDatabase db = this.getWritableDatabase();
+        return db.delete(ReportTable.TableName, ReportTable.ReportName.Name() + "=" + ReportID, null) > 0;
+    }
+
+    @Override
+    public boolean DeleteReports(int CustomerID) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        return db.delete(ReportTable.TableName, ReportTable.CustomerID.Name() + "=" + CustomerID, null) > 0;
     }
 
     //-------------------------------------------------------------------  ReportEntries

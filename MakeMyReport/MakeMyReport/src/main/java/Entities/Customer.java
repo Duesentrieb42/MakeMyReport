@@ -70,8 +70,13 @@ public class Customer {
         void CustomerEdit(Adapter_Customer_EventArgs e);
     }
 
+    public interface DeleteCustomerListener extends EventListener {
+        void CustomerDelete(Adapter_Customer_EventArgs e);
+    }
+
     public interface CustomerEventgenerator {
         void addEditCustomerListener(EditCustomerListener listener);
+        void addDeleteCustomerListener(DeleteCustomerListener listener);
     }
 
 }

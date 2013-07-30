@@ -31,13 +31,16 @@ public class Adapter_Customer extends BaseAdapter implements Customer.CustomerEv
     private ArrayList<Customer> mCustomers = null;
     private Context mContext;
     private int mLayoutResourceId;
+
     private ArrayList<Customer.EditCustomerListener> EditCustomerListeners;
+    private ArrayList<Customer.DeleteCustomerListener> DeleteCustomerListeners;
 
     public Adapter_Customer(Context context, ArrayList<Customer> Customers) {
         mContext = context;
         mCustomers = Customers;
         mLayoutResourceId = R.layout.home_customer;
         EditCustomerListeners = new ArrayList<Customer.EditCustomerListener>();
+        DeleteCustomerListeners = new ArrayList<Customer.DeleteCustomerListener>();
     }
 
     @Override
@@ -92,8 +95,10 @@ public class Adapter_Customer extends BaseAdapter implements Customer.CustomerEv
                 @Override
                 public void onClick(View view) {
 
-                    DL.GetDL(mContext).DeleteCustomer(mCustomers.get(i).CustomerID());
                     mCustomers.remove(i);
+                    DeleteCustomerListeners.get(0).CustomerDelete(new Customer.Adapter_Customer_EventArgs(this,customer.CustomerID()));
+
+
                     notifyDataSetInvalidated();
 
                 }
@@ -134,6 +139,11 @@ public class Adapter_Customer extends BaseAdapter implements Customer.CustomerEv
     @Override
     public void addEditCustomerListener(Customer.EditCustomerListener listener) {
         EditCustomerListeners.add(listener);
+    }
+
+    @Override
+    public void addDeleteCustomerListener(Customer.DeleteCustomerListener listener) {
+        DeleteCustomerListeners.add(listener);
     }
 
 
