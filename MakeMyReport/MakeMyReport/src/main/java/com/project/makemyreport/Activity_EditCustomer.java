@@ -79,7 +79,7 @@ public class Activity_EditCustomer extends Activity {
         imageView.setImageBitmap(mLogo);
 
         TextView name = (TextView) findViewById(R.id.editcustomer_name);
-        TextView description = (TextView) findViewById(R.id.editcustomer_name);
+        TextView description = (TextView) findViewById(R.id.editcustomer_description);
 
         name.setText(customer.Name());
         description.setText(customer.Description());
@@ -140,7 +140,7 @@ public class Activity_EditCustomer extends Activity {
         if (mLogo != null) {
 
             TextView name = (TextView) findViewById(R.id.editcustomer_name);
-            TextView description = (TextView) findViewById(R.id.editcustomer_name);
+            TextView description = (TextView) findViewById(R.id.editcustomer_description);
 
             if (DL.GetDL(Activity_EditCustomer.this).UpdateCustomer(new Customer(CustomerID,
                     name.getText().toString(),

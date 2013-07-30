@@ -72,6 +72,7 @@ public class Adapter_Customer extends BaseAdapter implements Customer.CustomerEv
             holder = new MenuItemHolder();
 
             holder.Name = (TextView) row.findViewById(R.id.home_customer_name);
+            holder.Description = (TextView) row.findViewById(R.id.home_customer_description);
             holder.Image = (ImageView) row.findViewById(R.id.home_customer_image);
             holder.ShowOptions = (ImageView) row.findViewById(R.id.home_customer_showoptions);
 
@@ -119,7 +120,7 @@ public class Adapter_Customer extends BaseAdapter implements Customer.CustomerEv
         } else {
             holder = (MenuItemHolder) row.getTag();
         }
-
+        holder.Description.setText(customer.Description());
         holder.Name.setText(customer.Name());
         if (customer.Logo() != null) {
             holder.Image.setImageBitmap(customer.Logo());
@@ -139,6 +140,7 @@ public class Adapter_Customer extends BaseAdapter implements Customer.CustomerEv
     static class MenuItemHolder {
 
         public TextView Name;
+        public TextView Description;
         public ImageView Image;
         public ImageView ShowOptions;
         public LinearLayout Options;
