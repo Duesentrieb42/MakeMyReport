@@ -4,101 +4,116 @@
               android:orientation="vertical"
               android:layout_width="fill_parent"
               android:layout_height="fill_parent"
-              android:background="@color/White">
+              android:background="@color/White"
+              android:gravity="center">
 
     <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content" android:background="@color/Dark_Gray" android:orientation="horizontal"
-            android:gravity="left">
-        <ImageView android:layout_width="25dp" android:layout_height="25dp" android:id="@+id/imageView2"
-                   android:layout_gravity="left|center_vertical" android:src="@drawable/customers"
-                   android:layout_marginLeft="5dp"/>
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="@string/Report_Case"
-                android:id="@+id/textView" android:textAlignment="gravity" android:gravity="center"
-                android:layout_marginLeft="20dp" android:textColor="@color/Light_Gray"/>
-    </LinearLayout>
-
-    <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="fill_parent"
-            android:layout_height="524dp"
-            android:background="@color/White">
-
-
-
-        <ImageView
-                android:layout_width="546dp"
-                android:layout_height="fill_parent"
-                android:id="@+id/issuePicture"
-                android:layout_margin="10dp"/>
-
-        <EditText
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Large Text"
-                android:id="@+id/textView"
-                android:layout_margin="10dp"
-                android:textAlignment="gravity"
-                android:gravity="left|top"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="25dp" android:background="@color/Dark_Gray" android:orientation="horizontal"
-            android:gravity="left">
-        <ImageView android:layout_width="25dp" android:layout_height="25dp" android:id="@+id/imageView2"
-                   android:layout_gravity="left|center_vertical" android:src="@drawable/customers"
-                   android:layout_marginLeft="5dp"/>
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="@string/Report_Navigation"
-                android:id="@+id/textView" android:textAlignment="gravity" android:gravity="center"
-                android:layout_marginLeft="20dp" android:textColor="@color/Light_Gray"/>
-    </LinearLayout>
-
-    <LinearLayout
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:background="@color/White"
-            android:padding="5dp">
+            android:layout_marginTop="75dp">
 
+        <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" android:background="@color/Dark_Gray" android:orientation="horizontal"
+                android:gravity="left">
+            <ImageView android:layout_width="25dp" android:layout_height="25dp" android:id="@+id/imageView2"
+                       android:layout_gravity="left|center_vertical" android:src="@drawable/customers"
+                       android:layout_marginLeft="5dp"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/Report_Case"
+                    android:id="@+id/textView" android:textAlignment="gravity" android:gravity="center"
+                    android:layout_marginLeft="20dp" android:textColor="@color/Light_Gray"/>
+        </LinearLayout>
 
-        <ImageButton
-                android:layout_width="100dp"
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:id="@+id/btnStart"
-                android:src="@drawable/navigation_back"
-                />
+                android:background="@color/White">
 
-        <ImageButton
-                android:layout_width="100dp"
-                android:layout_height="fill_parent"
-                android:id="@+id/btnPreviousItem"
-                android:src="@drawable/navigation_previous_item"
-                android:padding="5dp"/>
 
-        <ImageButton
-                android:layout_width="100dp"
-                android:layout_height="fill_parent"
-                android:id="@+id/btnNextItem"
-                android:src="@drawable/navigation_next_item"
-                android:padding="5dp"/>
 
-        <ImageButton
-                android:layout_width="100dp"
-                android:layout_height="fill_parent"
-                android:id="@+id/btnEnd"
-                android:src="@drawable/navigation_forward"
-                android:padding="5dp"/>
+            <ImageView
+                    android:layout_width="546dp"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/issuePicture"
+                    android:layout_margin="10dp"/>
+
+            <EditText
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Large Text"
+                    android:id="@+id/textView"
+                    android:layout_margin="10dp"
+                    android:textAlignment="gravity"
+                    android:gravity="left|top"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="75dp"
+            android:layout_marginBottom="75dp">
+
+        <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="25dp" android:background="@color/Dark_Gray" android:orientation="horizontal"
+                android:gravity="left">
+            <ImageView android:layout_width="25dp" android:layout_height="25dp" android:id="@+id/imageView2"
+                       android:layout_gravity="left|center_vertical" android:src="@drawable/customers"
+                       android:layout_marginLeft="5dp"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/Report_Navigation"
+                    android:id="@+id/textView" android:textAlignment="gravity" android:gravity="center"
+                    android:layout_marginLeft="20dp" android:textColor="@color/Light_Gray"/>
+        </LinearLayout>
+
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:background="@color/White"
+                android:padding="5dp">
+
+
+            <ImageButton
+                    android:layout_width="100dp"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/btnStart"
+                    android:src="@drawable/navigation_back"
+                    />
+
+            <ImageButton
+                    android:layout_width="100dp"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/btnPreviousItem"
+                    android:src="@drawable/navigation_previous_item"
+                    android:padding="5dp"/>
+
+            <ImageButton
+                    android:layout_width="100dp"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/btnNextItem"
+                    android:src="@drawable/navigation_next_item"
+                    android:padding="5dp"/>
+
+            <ImageButton
+                    android:layout_width="100dp"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/btnEnd"
+                    android:src="@drawable/navigation_forward"
+                    android:padding="5dp"/>
+        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>
