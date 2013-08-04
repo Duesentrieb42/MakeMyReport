@@ -15,16 +15,19 @@ public class Customer {
     private String mName;
     private String mDescription;
     private Bitmap mLogo;
+    private int mReportCount;
 
     public Customer(int CustomerID,
                     String Name,
                     String Description,
-                    Bitmap Logo) {
+                    Bitmap Logo,
+                    int ReportCount) {
 
         mCustomerID = CustomerID;
         mName = Name;
         mDescription = Description;
         mLogo = Logo;
+        mReportCount = ReportCount;
 
     }
 
@@ -48,6 +51,10 @@ public class Customer {
         return mLogo;
     }
 
+    //Liefert die Anzehal der Berichte
+    public int ReportCount(){
+        return mReportCount;
+    }
 
     public static class Adapter_Customer_EventArgs extends EventObject {
         private int mCustomerID;

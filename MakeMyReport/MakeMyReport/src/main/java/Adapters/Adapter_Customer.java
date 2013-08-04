@@ -78,7 +78,7 @@ public class Adapter_Customer extends BaseAdapter implements Customer.CustomerEv
             holder.Description = (TextView) row.findViewById(R.id.home_customer_description);
             holder.Image = (ImageView) row.findViewById(R.id.home_customer_image);
             holder.ShowOptions = (ImageView) row.findViewById(R.id.home_customer_showoptions);
-
+            holder.Count = (TextView)row.findViewById(R.id.home_customer_reportscount);
 
             final View EditCustomer = (View)row.findViewById(R.id.customer_button_edit);
             holder.EditButton = EditCustomer;
@@ -125,8 +125,16 @@ public class Adapter_Customer extends BaseAdapter implements Customer.CustomerEv
         } else {
             holder = (MenuItemHolder) row.getTag();
         }
+
         holder.Description.setText(customer.Description());
         holder.Name.setText(customer.Name());
+
+        if(customer.ReportCount()>0){
+            holder.Count.setText(customer.ReportCount() +" Reports");
+        }else{
+            holder.Count.setText(R.string.NoReports);
+        }
+
         if (customer.Logo() != null) {
             holder.Image.setImageBitmap(customer.Logo());
         }
@@ -154,6 +162,7 @@ public class Adapter_Customer extends BaseAdapter implements Customer.CustomerEv
         public ImageView Image;
         public ImageView ShowOptions;
         public LinearLayout Options;
+        public TextView Count;
 
         public View DeleteButton;
         public View EditButton;
