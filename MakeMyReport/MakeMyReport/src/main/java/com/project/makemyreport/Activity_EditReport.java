@@ -18,7 +18,6 @@ import Entities.Report;
 public class Activity_EditReport extends Activity {
 
     ImageView mIssuePicture;
-    Boolean mIsInitialized = Boolean.FALSE;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +40,6 @@ public class Activity_EditReport extends Activity {
         }
 
         InitIssue();
-        mIsInitialized = Boolean.TRUE;
         InitNavigationButtons(null);
     }
 
@@ -50,8 +48,6 @@ public class Activity_EditReport extends Activity {
     }
 
     private void InitIssue(){
-
-        if (mIsInitialized == Boolean.FALSE){
 
         mIssuePicture = (ImageView) findViewById(R.id.issuePicture);
 
@@ -63,7 +59,6 @@ public class Activity_EditReport extends Activity {
             }
 
         });
-        }
     }
 
     private void dispatchTakePictureIntent(int actionCode) {
