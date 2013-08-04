@@ -30,9 +30,9 @@ public interface itf_DL_Reports {
                     + ReportChangeeDate.Create()+")";
         }
 
-        public static String TableName =  "tblCustomers";
+        public static String TableName =  "tblReports";
         public static Column ReportID = new Column("ReportID", "INTEGER PRIMARY KEY");
-        public static Column CustomerID = new Column("CustomrID", "INTEGER");
+        public static Column CustomerID = new Column("CustomerID", "INTEGER");
         public static Column ReportName = new Column("Name","Text");
         public static Column ReportCreateDate =new Column("CreateDate","INTEGER");
         public static Column ReportChangeeDate =new Column("ChangeDate","INTEGER");

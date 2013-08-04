@@ -129,10 +129,10 @@ public class Adapter_Customer extends BaseAdapter implements Customer.CustomerEv
         holder.Description.setText(customer.Description());
         holder.Name.setText(customer.Name());
 
-        if(customer.ReportCount()>0){
-            holder.Count.setText(customer.ReportCount() +" Reports");
-        }else{
-            holder.Count.setText(R.string.NoReports);
+        switch  (customer.ReportCount()){
+            case 0:  holder.Count.setText(R.string.NoReports); break;
+            case 1:  holder.Count.setText(customer.ReportCount() +R.string.Report); break;
+            default:  holder.Count.setText(customer.ReportCount() +R.string.Reports); break;
         }
 
         if (customer.Logo() != null) {

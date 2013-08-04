@@ -5,7 +5,7 @@
     </string>
     <string name="action_settings">Settings
     </string>
-
+    <string name="Report">Report</string>
     <string name="Customers">Customers</string>
     <string name="LastReports">Last used reports</string>
     <string name="Reports">Reports</string>
@@ -43,6 +43,7 @@
     <string name="Error_Customer_Name">Please enter a name</string>
     <string name="Error_Customer_Description">Please enter a description</string>
     <string name="Error_Customer_Logo">Please select a Logo</string><string name="Report_Navigation">Navigation</string><string name="Report_Case">Case #</string><string name="Butten_delete">Delete</string><string name="Button_Edit_Customer">Edit</string><string name="NoReports">No reports</string>
+
 
 
 

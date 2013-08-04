@@ -27,8 +27,8 @@ public interface itf_DL_Customers {
                     + CustomerLogo.Create() + ")";
         }
 
-        public static String TableName =  "tblReports";
-        public static Column CustomerID = new Column("ReportID", "INTEGER PRIMARY KEY");
+        public static String TableName =  "tblCustomers";
+        public static Column CustomerID = new Column("CustomerID", "INTEGER PRIMARY KEY");
         public static Column CustomerName = new Column("Name","Text");
         public static Column CustomerDescription = new Column("Description","Text");
         public static Column CustomerLogo =new Column("Logo", "BLOB");

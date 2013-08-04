@@ -99,12 +99,13 @@ public class DL extends SQLiteOpenHelper implements itf_DL_Customers,itf_DL_Repo
 
         ArrayList<Customer> customers = new ArrayList<Customer>();
 
-        String selectQuery = "SELECT  * ," +
-                             "COUNT("+ ReportTable.TableName +"."+ ReportTable.CustomerID.Name() + ") as count" +
+        String selectQuery = "SELECT  *" +
+                              ",COUNT("+ ReportTable.ReportID.Name() + ")" +
                              " FROM " + CustomerTable.TableName +
-                             " LEFT JOIN " + ReportTable.TableName + " ON " +
+                             " LEFT JOIN " + ReportTable.TableName + " ON (" +
                              ReportTable.TableName +"."+ ReportTable.CustomerID.Name() +" = "+
-                             CustomerTable.TableName+"."+  CustomerTable.CustomerID.Name();
+                             CustomerTable.TableName+"."+  CustomerTable.CustomerID.Name()+") " +
+                             "GROUP BY " + CustomerTable.TableName+"."+  CustomerTable.CustomerID.Name();
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
@@ -112,7 +113,12 @@ public class DL extends SQLiteOpenHelper implements itf_DL_Customers,itf_DL_Repo
         if (cursor.moveToFirst()) {
             do {
 
-                int count = Integer.parseInt(cursor.getString(4));
+                int count;
+                if (cursor.isNull(4)){
+                    count = 0;
+                } else{
+                    count = Integer.parseInt(cursor.getString(4));
+                }
 
                 int id = Integer.parseInt(cursor.getString(0));
                 String name = cursor.getString(1);
