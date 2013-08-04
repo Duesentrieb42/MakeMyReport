@@ -33,7 +33,7 @@
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:background="@color/White">
+                android:background="@color/Light_Gray">
 
 
 
@@ -41,7 +41,8 @@
                     android:layout_width="546dp"
                     android:layout_height="fill_parent"
                     android:id="@+id/issuePicture"
-                    android:layout_margin="10dp"/>
+                    android:layout_margin="10dp"
+                    android:background="@color/White"/>
 
             <EditText
                     android:layout_width="fill_parent"
@@ -51,7 +52,8 @@
                     android:id="@+id/textView"
                     android:layout_margin="10dp"
                     android:textAlignment="gravity"
-                    android:gravity="left|top"/>
+                    android:gravity="left|top"
+                    android:background="@color/White"/>
 
         </LinearLayout>
     </LinearLayout>
