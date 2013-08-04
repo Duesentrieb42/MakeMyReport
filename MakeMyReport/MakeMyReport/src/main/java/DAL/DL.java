@@ -351,7 +351,7 @@ public class DL extends SQLiteOpenHelper implements itf_DL_Customers,itf_DL_Repo
 
         ArrayList<Report_Entry> reportentries = new ArrayList<Report_Entry>();
 
-        String selectQuery = "SELECT  * FROM " + ReportTable.TableName;
+        String selectQuery = "SELECT  * FROM " + ReportEntryTable.TableName;
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
