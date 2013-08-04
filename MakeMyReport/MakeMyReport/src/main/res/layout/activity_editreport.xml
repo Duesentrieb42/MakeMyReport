@@ -29,7 +29,6 @@
                     android:layout_marginLeft="20dp" android:textColor="@color/Light_Gray"/>
         </LinearLayout>
 
-
         <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"
