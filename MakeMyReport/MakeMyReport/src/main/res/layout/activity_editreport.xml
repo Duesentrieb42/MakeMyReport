@@ -41,7 +41,7 @@
                     android:layout_height="fill_parent"
                     android:id="@+id/issuePicture"
                     android:layout_margin="10dp"
-                    android:background="@color/White"/>
+                    android:background="@drawable/roundrectangle_white"/>
 
             <EditText
                     android:layout_width="fill_parent"
@@ -49,10 +49,13 @@
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="Large Text"
                     android:id="@+id/textView"
-                    android:layout_margin="10dp"
                     android:textAlignment="gravity"
                     android:gravity="left|top"
-                    android:background="@color/White"/>
+                    android:background="@drawable/roundrectangle_white"
+                    android:paddingLeft="5dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="10dp"/>
 
         </LinearLayout>
     </LinearLayout>
