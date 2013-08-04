@@ -45,7 +45,6 @@
     <string name="Error_Customer_Logo">Please select a Logo</string><string name="Report_Navigation">Navigation</string><string name="Report_Case">Case #</string><string name="Butten_delete">Delete</string><string name="Button_Edit_Customer">Edit</string><string name="NoReports">No reports</string>
 
     <string name="Report">Report</string>
-    <string name="Reports">Reports</string>
 
 
 </resources>
