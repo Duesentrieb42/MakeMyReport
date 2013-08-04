@@ -38,7 +38,7 @@
             <ImageView
                     android:layout_width="546dp"
                     android:layout_height="fill_parent"
-                    android:id="@+id/issuePicture"
+                    android:id="@+id/EntryPicture"
                     android:layout_margin="10dp"
                     android:background="@drawable/roundrectangle_white"/>
 
@@ -47,7 +47,7 @@
                     android:layout_height="fill_parent"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="Large Text"
-                    android:id="@+id/textView"
+                    android:id="@+id/EntyText"
                     android:textAlignment="gravity"
                     android:gravity="left|top"
                     android:background="@drawable/roundrectangle_white"

@@ -3,21 +3,29 @@ package com.project.makemyreport;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.Window;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
+
 import java.util.Date;
+import java.util.List;
+
 import DAL.DL;
 import Entities.Report;
+import Entities.Report_Entry;
 
 /**
  * Created by Vitali on 15.07.13.
  */
 public class Activity_EditReport extends Activity {
 
-    ImageView mIssuePicture;
+    ImageView mEntryPicture;
+    TextView mEntryText;
+    List<Report_Entry> mReport_Entries;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +47,9 @@ public class Activity_EditReport extends Activity {
             DL.GetDL(this).SaveReport(new Report(ReportsID,CustomerID,name,date,date));
         }
 
-        InitIssue();
+        mReport_Entries = DL.GetDL(this).GetReportEntries(ReportsID);
+
+        InitEntry();
         InitNavigationButtons(null);
     }
 
@@ -47,11 +57,12 @@ public class Activity_EditReport extends Activity {
 
     }
 
-    private void InitIssue(){
+    private void InitEntry(){
 
-        mIssuePicture = (ImageView) findViewById(R.id.issuePicture);
+        mEntryPicture = (ImageView) findViewById(R.id.EntryPicture);
+        mEntryText = (TextView) findViewById(R.id.EntyText);
 
-        mIssuePicture.setOnClickListener(new View.OnClickListener(){
+        mEntryPicture.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View view) {
@@ -69,7 +80,7 @@ public class Activity_EditReport extends Activity {
     private void handleSmallCameraPhoto(Intent intent) {
         Bundle extras = intent.getExtras();
         Bitmap imageBitmap = (Bitmap) extras.get("data");
-        mIssuePicture.setImageBitmap(imageBitmap);
+        mEntryPicture.setImageBitmap(imageBitmap);
     }
 
     @Override
@@ -81,4 +92,11 @@ public class Activity_EditReport extends Activity {
         }
     }
 
+    private void SetEntry(Report_Entry entry){
+
+        mEntryPicture.setImageBitmap(BitmapFactory.decodeFile(entry.EntryImagePath()));
+        mEntryText.setText(entry.EntryDescription());
+
+    }
 }
+
