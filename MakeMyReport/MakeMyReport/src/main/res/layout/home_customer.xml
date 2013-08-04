@@ -26,7 +26,7 @@
         <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="190dp"
-                android:layout_height="60dp"
+                android:layout_height="70dp"
                 android:layout_marginLeft="10dp"
                 android:padding="5dp">
 
@@ -45,6 +45,16 @@
                     android:text="Small Text"
                     android:id="@+id/home_customer_description"
                     android:textColor="@color/Dark_Gray"/>
+
+            <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="Small Text"
+                    android:id="@+id/textView"
+                    android:textColor="@color/Light_Green"
+                    android:textAlignment="gravity"
+                    android:gravity="bottom|right"/>
 
         </LinearLayout>
 
