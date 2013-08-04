@@ -122,7 +122,7 @@ public class Activity_EditCustomer extends Activity {
             if (DL.GetDL(Activity_EditCustomer.this).SaveCustomer(new Customer(-1,
                     name.getText().toString(),
                     description.getText().toString(),
-                    mLogo))) {
+                    mLogo,0))) {
 
                 this.finish();
             } else {
@@ -145,7 +145,7 @@ public class Activity_EditCustomer extends Activity {
             if (DL.GetDL(Activity_EditCustomer.this).UpdateCustomer(new Customer(CustomerID,
                     name.getText().toString(),
                     description.getText().toString(),
-                    mLogo))) {
+                    mLogo,0))) {
 
                 this.finish();
             } else {

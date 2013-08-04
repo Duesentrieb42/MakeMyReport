@@ -15,7 +15,7 @@ public interface itf_DL_Customers {
     boolean SaveCustomer(Customer customer);
     boolean UpdateCustomer(Customer customer);
     boolean DeleteCustomer(int CustomerID);
-
+    int GetReportCount(int CustomerID);
 
     public static class CustomerTable{
 
