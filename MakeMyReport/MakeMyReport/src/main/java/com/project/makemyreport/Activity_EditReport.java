@@ -2,18 +2,13 @@ package com.project.makemyreport;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.Window;
 import android.view.View;
 import android.widget.ImageView;
-
 import java.util.Date;
-
 import DAL.DL;
 import Entities.Report;
 
