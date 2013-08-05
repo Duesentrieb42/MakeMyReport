@@ -20,7 +20,7 @@ import java.util.Date;
 /**
  * Created by Vitali on 14.07.13.
  */
-public class DL extends SQLiteOpenHelper implements itf_DL_Customers,itf_DL_Reports,itf_DL_Report_Entries{
+public class DL extends SQLiteOpenHelper implements itf_DL_Customers, itf_DL_Reports, itf_DL_Report_Entries {
 
     private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NAME = "DataReport";
@@ -68,7 +68,7 @@ public class DL extends SQLiteOpenHelper implements itf_DL_Customers,itf_DL_Repo
     @Override
     public boolean SaveCustomer(Customer customer) {
 
-        try{
+        try {
 
             SQLiteDatabase db = this.getWritableDatabase();
 
@@ -89,7 +89,7 @@ public class DL extends SQLiteOpenHelper implements itf_DL_Customers,itf_DL_Repo
 
             return true;
 
-        }catch(Exception ex){
+        } catch (Exception ex) {
             return false;
         }
     }
@@ -99,25 +99,30 @@ public class DL extends SQLiteOpenHelper implements itf_DL_Customers,itf_DL_Repo
 
         ArrayList<Customer> customers = new ArrayList<Customer>();
 
-        String selectQuery = "SELECT  *" +
-                              ",COUNT("+ ReportTable.ReportID.Name() + ")" +
-                             " FROM " + CustomerTable.TableName +
-                             " LEFT JOIN " + ReportTable.TableName + " ON (" +
-                             ReportTable.TableName +"."+ ReportTable.CustomerID.Name() +" = "+
-                             CustomerTable.TableName+"."+  CustomerTable.CustomerID.Name()+") " +
-                             "GROUP BY " + CustomerTable.TableName+"."+  CustomerTable.CustomerID.Name();
+        String selectQuery = "SELECT DISTINCT  *" +
+                ",COUNT(DISTINCT " + ReportTable.TableName + "." + ReportTable.ReportID.Name() + ") as cou" +
+                " FROM " + CustomerTable.TableName +
+                " LEFT JOIN " + ReportTable.TableName + " ON (" +
+                CustomerTable.TableName + "." + CustomerTable.CustomerID.Name() + " = " +
+                ReportTable.TableName + "." + ReportTable.CustomerID.Name() + " ) " +
+                "GROUP BY " + CustomerTable.TableName + "." + CustomerTable.CustomerID.Name();
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
+
+        int globalcount = 0;
 
         if (cursor.moveToFirst()) {
             do {
 
                 int count;
-                if (cursor.isNull(4)){
+                if (cursor.isNull(4)) {
                     count = 0;
-                } else{
+                } else {
+
                     count = Integer.parseInt(cursor.getString(4));
+                    count -= globalcount;
+                    globalcount = Integer.parseInt(cursor.getString(4));
                 }
 
                 int id = Integer.parseInt(cursor.getString(0));
@@ -129,7 +134,7 @@ public class DL extends SQLiteOpenHelper implements itf_DL_Customers,itf_DL_Repo
                 InputStream is = new ByteArrayInputStream(byteArray);
                 Bitmap logo = BitmapFactory.decodeStream(is);
 
-                customers.add(new Customer(id,name,description,logo,count));
+                customers.add(new Customer(id, name, description, logo, count));
 
             } while (cursor.moveToNext());
         }
@@ -140,14 +145,14 @@ public class DL extends SQLiteOpenHelper implements itf_DL_Customers,itf_DL_Repo
     @Override
     public Customer GetCustomer(int CustomerID) {
 
-                SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(CustomerTable.TableName, new String[] { CustomerTable.CustomerID.Name(),
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(CustomerTable.TableName, new String[]{CustomerTable.CustomerID.Name(),
                 CustomerTable.CustomerName.Name(),
                 CustomerTable.CustomerDescription.Name(),
-                CustomerTable.CustomerLogo.Name() },
+                CustomerTable.CustomerLogo.Name()},
                 CustomerTable.CustomerID.Name() + "=?",
-                new String[] { String.valueOf(CustomerID) }, null, null, null, null);
-        if (cursor != null){
+                new String[]{String.valueOf(CustomerID)}, null, null, null, null);
+        if (cursor != null) {
             cursor.moveToFirst();
 
             int id = Integer.parseInt(cursor.getString(0));
@@ -158,7 +163,7 @@ public class DL extends SQLiteOpenHelper implements itf_DL_Customers,itf_DL_Repo
             InputStream is = new ByteArrayInputStream(byteArray);
             Bitmap logo = BitmapFactory.decodeStream(is);
 
-            Customer customer = new Customer(id,name,description,logo,0);
+            Customer customer = new Customer(id, name, description, logo, 0);
 
             return customer;
         }
@@ -197,7 +202,7 @@ public class DL extends SQLiteOpenHelper implements itf_DL_Customers,itf_DL_Repo
     public int GetReportCount(int CustomerID) {
         ArrayList<Report> reports = new ArrayList<Report>();
 
-        String selectQuery = "SELECT Count(*) FROM " + ReportTable.TableName  +
+        String selectQuery = "SELECT Count(*) FROM " + ReportTable.TableName +
                 " WHERE " + ReportTable.CustomerID + " = " + CustomerID;
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -222,13 +227,13 @@ public class DL extends SQLiteOpenHelper implements itf_DL_Customers,itf_DL_Repo
         ArrayList<Report> reports = new ArrayList<Report>();
 
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(ReportTable.TableName, new String[] { ReportTable.ReportID.Name(),
+        Cursor cursor = db.query(ReportTable.TableName, new String[]{ReportTable.ReportID.Name(),
                 ReportTable.CustomerID.Name(),
                 ReportTable.ReportName.Name(),
                 ReportTable.ReportCreateDate.Name(),
                 ReportTable.ReportChangeeDate.Name()},
                 ReportTable.CustomerID.Name() + "=?",
-                new String[] { String.valueOf(CustomerID) }, null, null, null, null);
+                new String[]{String.valueOf(CustomerID)}, null, null, null, null);
 
         if (cursor.moveToFirst()) {
             do {
@@ -238,7 +243,7 @@ public class DL extends SQLiteOpenHelper implements itf_DL_Customers,itf_DL_Repo
                 Date CreateDate = new Date(cursor.getLong(3));
                 Date ChangeDate = new Date(cursor.getLong(4));
 
-                reports.add(new Report(id,CustomerID,Name,CreateDate,ChangeDate));
+                reports.add(new Report(id, CustomerID, Name, CreateDate, ChangeDate));
 
             } while (cursor.moveToNext());
         }
@@ -251,9 +256,9 @@ public class DL extends SQLiteOpenHelper implements itf_DL_Customers,itf_DL_Repo
 
         ArrayList<Report> reports = new ArrayList<Report>();
 
-        String selectQuery = "SELECT * FROM " + ReportTable.TableName  +
-                             " ORDER BY " + ReportTable.ReportChangeeDate.Name() +
-                             " LIMIT " + count;
+        String selectQuery = "SELECT * FROM " + ReportTable.TableName +
+                " ORDER BY " + ReportTable.ReportChangeeDate.Name() +
+                " LIMIT " + count;
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
@@ -267,7 +272,7 @@ public class DL extends SQLiteOpenHelper implements itf_DL_Customers,itf_DL_Repo
                 Date CreateDate = new Date(cursor.getLong(3));
                 Date ChangeDate = new Date(cursor.getLong(4));
 
-                reports.add(new Report(id,CustomerID,Name,CreateDate,ChangeDate));
+                reports.add(new Report(id, CustomerID, Name, CreateDate, ChangeDate));
 
             } while (cursor.moveToNext());
         }
@@ -279,14 +284,14 @@ public class DL extends SQLiteOpenHelper implements itf_DL_Customers,itf_DL_Repo
     public Report GetReport(int ReportsID) {
 
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(ReportTable.TableName, new String[] { ReportTable.ReportID.Name(),
+        Cursor cursor = db.query(ReportTable.TableName, new String[]{ReportTable.ReportID.Name(),
                 ReportTable.CustomerID.Name(),
                 ReportTable.ReportName.Name(),
                 ReportTable.ReportCreateDate.Name(),
                 ReportTable.ReportChangeeDate.Name()},
                 ReportTable.ReportID.Name() + "=?",
-                new String[] { String.valueOf(ReportsID) }, null, null, null, null);
-        if (cursor != null){
+                new String[]{String.valueOf(ReportsID)}, null, null, null, null);
+        if (cursor != null) {
             cursor.moveToFirst();
 
             int id = Integer.parseInt(cursor.getString(0));
@@ -295,7 +300,7 @@ public class DL extends SQLiteOpenHelper implements itf_DL_Customers,itf_DL_Repo
             Date CreateDate = new Date(cursor.getLong(3));
             Date ChangeDate = new Date(cursor.getLong(4));
 
-            return new Report(id,CustomerID,Name,CreateDate,ChangeDate);
+            return new Report(id, CustomerID, Name, CreateDate, ChangeDate);
         }
 
         return null;
@@ -305,7 +310,7 @@ public class DL extends SQLiteOpenHelper implements itf_DL_Customers,itf_DL_Repo
     @Override
     public boolean SaveReport(Report report) {
 
-        try{
+        try {
 
             SQLiteDatabase db = this.getWritableDatabase();
 
@@ -313,7 +318,7 @@ public class DL extends SQLiteOpenHelper implements itf_DL_Customers,itf_DL_Repo
             ContentValues values = new ContentValues();
             values.put(ReportTable.CustomerID.Name(), report.CustomerID());
             values.put(ReportTable.ReportName.Name(), report.Name());
-            values.put(ReportTable.ReportCreateDate.Name(),report.CreateTime().getTime());
+            values.put(ReportTable.ReportCreateDate.Name(), report.CreateTime().getTime());
             values.put(ReportTable.ReportChangeeDate.Name(), report.ChangeTime().getTime());
 
             // Inserting Row
@@ -322,7 +327,7 @@ public class DL extends SQLiteOpenHelper implements itf_DL_Customers,itf_DL_Repo
 
             return true;
 
-        }catch(Exception ex){
+        } catch (Exception ex) {
             return false;
         }
     }
@@ -366,7 +371,7 @@ public class DL extends SQLiteOpenHelper implements itf_DL_Customers,itf_DL_Repo
                 String imagepath = cursor.getString(4);
 
 
-                reportentries.add(new Report_Entry(id,reportid,orderno,Text,imagepath));
+                reportentries.add(new Report_Entry(id, reportid, orderno, Text, imagepath));
 
             } while (cursor.moveToNext());
         }
@@ -377,7 +382,7 @@ public class DL extends SQLiteOpenHelper implements itf_DL_Customers,itf_DL_Repo
 
     @Override
     public boolean SaveReportEntry(Report_Entry ReportEntry) {
-        try{
+        try {
 
             SQLiteDatabase db = this.getWritableDatabase();
 
@@ -394,7 +399,7 @@ public class DL extends SQLiteOpenHelper implements itf_DL_Customers,itf_DL_Repo
 
             return true;
 
-        }catch(Exception ex){
+        } catch (Exception ex) {
             return false;
         }
     }

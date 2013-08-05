@@ -55,6 +55,10 @@
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:text="CUSTOMER_DESCRIPTION"
                         android:id="@+id/reports_customerdescription" android:textColor="@color/Light_Gray"/>
+                <TextView android:layout_width="fill_parent" android:layout_height="fill_parent"
+                          android:textAppearance="?android:attr/textAppearanceMedium" android:text="@string/Report"
+                          android:id="@+id/reports_reportscount" android:textColor="@color/Light_Green"
+                          android:textAlignment="gravity" android:gravity="bottom|right" android:singleLine="true"/>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
