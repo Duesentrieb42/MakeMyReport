@@ -100,10 +100,25 @@ public class Activity_Reports extends Activity {
         TextView CustomerName = (TextView) findViewById(R.id.reports_customername);
         TextView CustomerDescription = (TextView) findViewById(R.id.reports_customerdescription);
         ImageView CustomerLogo = (ImageView) findViewById(R.id.reports_customer_logo);
+        TextView ReportsCount = (TextView) findViewById(R.id.reports_reportscount);
+
 
         CustomerName.setText(customer.Name());
         CustomerDescription.setText(customer.Description());
         CustomerLogo.setImageBitmap(customer.Logo());
+
+        switch (customer.ReportCount()) {
+            case 0:
+                ReportsCount.setText(R.string.NoReports);
+                break;
+            case 1:
+                ReportsCount.setText(customer.ReportCount() + " report");
+                break;
+            default:
+                ReportsCount.setText(customer.ReportCount() + " reports");
+                break;
+        }
+
 
     }
 
@@ -151,7 +166,7 @@ public class Activity_Reports extends Activity {
             @Override
             public boolean onGroupClick(ExpandableListView expandableListView, View view, int i, long l) {
                 MenuItem item = (MenuItem) expandableListView.getItemAtPosition(i);
-                OnItemClick(item.MenuType(),CustomerID);
+                OnItemClick(item.MenuType(), CustomerID);
                 return false;
             }
         });
