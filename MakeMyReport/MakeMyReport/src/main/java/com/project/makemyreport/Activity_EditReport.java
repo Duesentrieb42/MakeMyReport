@@ -8,8 +8,10 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.Window;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Date;
 import java.util.List;
@@ -55,6 +57,50 @@ public class Activity_EditReport extends Activity {
 
     private void InitNavigationButtons(Report report){
 
+        Button btnFirstItem  = (Button) findViewById(R.id.btnFirstItem);
+
+        btnFirstItem.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+                FirstItem_Click();
+            }
+
+        });
+
+        Button btnPreviousItem  = (Button) findViewById(R.id.btnPreviousItem);
+
+        btnFirstItem.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+                PreviousItem_Click();
+            }
+
+        });
+
+        Button btnNextItem  = (Button) findViewById(R.id.btnNextItem);
+
+        btnFirstItem.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+                NextItem_Click();
+            }
+
+        });
+
+        Button btnLastItem  = (Button) findViewById(R.id.btnLastItem);
+
+        btnFirstItem.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+                LastItem_Click();
+            }
+
+        });
+
     }
 
     private void InitEntry(){
@@ -98,5 +144,22 @@ public class Activity_EditReport extends Activity {
         mEntryText.setText(entry.EntryDescription());
 
     }
+
+    private void FirstItem_Click(){
+        Toast.makeText(getApplicationContext(), "FirstItem Bearbeitung.", Toast.LENGTH_SHORT).show();
+    }
+
+    private void PreviousItem_Click(){
+        Toast.makeText(getApplicationContext(), "PreviousItem Bearbeitung.", Toast.LENGTH_SHORT).show();
+    }
+
+    private void NextItem_Click(){
+        Toast.makeText(getApplicationContext(), "NextItem Bearbeitung.", Toast.LENGTH_SHORT).show();
+    }
+
+    private void LastItem_Click(){
+        Toast.makeText(getApplicationContext(), "LastItem Bearbeitung.", Toast.LENGTH_SHORT).show();
+    }
+
 }
 

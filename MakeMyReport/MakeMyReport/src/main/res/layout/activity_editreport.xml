@@ -92,7 +92,7 @@
             <ImageButton
                     android:layout_width="100dp"
                     android:layout_height="fill_parent"
-                    android:id="@+id/btnStart"
+                    android:id="@+id/btnFirstItem"
                     android:src="@drawable/navigation_back"
                     />
 
@@ -113,7 +113,7 @@
             <ImageButton
                     android:layout_width="100dp"
                     android:layout_height="fill_parent"
-                    android:id="@+id/btnEnd"
+                    android:id="@+id/btnLastItem"
                     android:src="@drawable/navigation_forward"
                     android:padding="5dp"/>
         </LinearLayout>
