@@ -9,6 +9,7 @@ import android.provider.MediaStore;
 import android.view.Window;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -57,9 +58,9 @@ public class Activity_EditReport extends Activity {
 
     private void InitNavigationButtons(Report report){
 
-        Button btnFirstItem  = (Button) findViewById(R.id.btnFirstItem);
+        ImageButton btnFirstItem  = (ImageButton) findViewById(R.id.btnFirstItem);
 
-        btnFirstItem.setOnClickListener(new View.OnClickListener(){
+        btnFirstItem.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
@@ -68,9 +69,9 @@ public class Activity_EditReport extends Activity {
 
         });
 
-        Button btnPreviousItem  = (Button) findViewById(R.id.btnPreviousItem);
+        ImageButton btnPreviousItem  = (ImageButton) findViewById(R.id.btnPreviousItem);
 
-        btnFirstItem.setOnClickListener(new View.OnClickListener(){
+        btnPreviousItem.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View view) {
@@ -79,9 +80,9 @@ public class Activity_EditReport extends Activity {
 
         });
 
-        Button btnNextItem  = (Button) findViewById(R.id.btnNextItem);
+        ImageButton btnNextItem  = (ImageButton) findViewById(R.id.btnNextItem);
 
-        btnFirstItem.setOnClickListener(new View.OnClickListener(){
+        btnNextItem.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View view) {
@@ -90,9 +91,9 @@ public class Activity_EditReport extends Activity {
 
         });
 
-        Button btnLastItem  = (Button) findViewById(R.id.btnLastItem);
+        ImageButton btnLastItem  = (ImageButton) findViewById(R.id.btnLastItem);
 
-        btnFirstItem.setOnClickListener(new View.OnClickListener(){
+        btnLastItem.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View view) {
